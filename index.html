@@ -1,0 +1,3470 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lapatanova public portal</title>
+    <meta name="description" content="Lapatanova public strategy portal" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+:root {
+  --bg: #f5f1e8;
+  --bg-accent: #efe2c2;
+  --paper: rgba(255, 250, 242, 0.92);
+  --paper-strong: rgba(255, 247, 234, 0.98);
+  --ink: #20201d;
+  --muted: #655b4a;
+  --border: rgba(32, 32, 29, 0.12);
+  --accent: #1b6f67;
+  --accent-soft: rgba(27, 111, 103, 0.14);
+  --accent-2: #8b4a2b;
+  --shadow: 0 24px 70px rgba(35, 24, 10, 0.11);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --content-width: 880px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 30%),
+    radial-gradient(circle at top right, rgba(27, 111, 103, 0.12), transparent 32%),
+    linear-gradient(180deg, #f8f3ea 0%, #f4eee2 36%, #f1eadf 100%);
+  font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 28px 24px 24px;
+  border-right: 1px solid var(--border);
+  background: rgba(255, 251, 245, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  margin-bottom: 26px;
+  padding: 18px 18px 20px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, rgba(27, 111, 103, 0.1), rgba(139, 74, 43, 0.1));
+  border: 1px solid rgba(27, 111, 103, 0.14);
+}
+
+.brand-kicker {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.brand h1 {
+  margin: 10px 0 10px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.brand p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.nav-group + .nav-group {
+  margin-top: 22px;
+}
+
+.nav-label {
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nav-links,
+.toc-links,
+.download-links {
+  display: grid;
+  gap: 8px;
+}
+
+.nav-link,
+.download-link,
+.toc-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.nav-link:hover,
+.download-link:hover,
+.toc-link:hover,
+.nav-link.active {
+  text-decoration: none;
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.nav-link small,
+.download-link small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.main {
+  min-width: 0;
+  padding: 34px 28px 48px;
+}
+
+.hero {
+  padding: 28px 30px;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(135deg, rgba(255, 251, 245, 0.96), rgba(239, 226, 194, 0.84)),
+    linear-gradient(180deg, rgba(27, 111, 103, 0.05), rgba(139, 74, 43, 0.06));
+  border: 1px solid rgba(32, 32, 29, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr);
+  gap: 24px;
+  align-items: end;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--muted);
+  border: 1px solid rgba(32, 32, 29, 0.08);
+}
+
+.hero h2 {
+  margin: 16px 0 10px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.hero p {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.hero-stats {
+  display: grid;
+  gap: 12px;
+}
+
+.stat {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(32, 32, 29, 0.08);
+}
+
+.stat strong {
+  display: block;
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.section {
+  margin-top: 28px;
+  padding: 24px 24px 6px;
+  border-radius: var(--radius-xl);
+  background: var(--paper);
+  border: 1px solid rgba(32, 32, 29, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.section h3,
+.page-card h3 {
+  margin: 0 0 10px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.section > p {
+  margin-top: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  margin: 20px 0 18px;
+}
+
+.page-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(32, 32, 29, 0.08);
+}
+
+.page-card p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 0;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+  border: 1px solid var(--ink);
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: rgba(32, 32, 29, 0.15);
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 22px;
+  align-items: start;
+}
+
+.article {
+  padding: 28px 30px;
+  border-radius: var(--radius-xl);
+  background: var(--paper-strong);
+  border: 1px solid rgba(32, 32, 29, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.article h1,
+.article h2,
+.article h3,
+.article h4 {
+  color: var(--ink);
+  scroll-margin-top: 28px;
+}
+
+.article h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 46px;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  margin: 0 0 18px;
+}
+
+.article h2 {
+  margin-top: 34px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.article h3 {
+  margin-top: 28px;
+  font-size: 24px;
+}
+
+.article p,
+.article li {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.article ul,
+.article ol {
+  padding-left: 22px;
+}
+
+.article blockquote {
+  margin: 20px 0;
+  padding: 14px 18px;
+  border-left: 3px solid var(--accent);
+  background: rgba(27, 111, 103, 0.06);
+  color: var(--muted);
+}
+
+.article code {
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: rgba(32, 32, 29, 0.08);
+  font-family: "IBM Plex Mono", "SFMono-Regular", monospace;
+  font-size: 0.92em;
+}
+
+.article pre {
+  overflow: auto;
+  padding: 16px;
+  border-radius: 16px;
+  background: #1d1f21;
+  color: #f6f2e8;
+}
+
+.article pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.article th,
+.article td {
+  padding: 11px 12px;
+  border-bottom: 1px solid rgba(32, 32, 29, 0.1);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article thead th {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.table-wrap {
+  margin: 20px 0;
+  overflow-x: auto;
+  border: 1px solid rgba(32, 32, 29, 0.08);
+  border-radius: 18px;
+  background: white;
+}
+
+.aside {
+  position: sticky;
+  top: 26px;
+  display: grid;
+  gap: 18px;
+}
+
+.aside-card {
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 250, 242, 0.88);
+  border: 1px solid rgba(32, 32, 29, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.aside-card h4 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.aside-card p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.notice {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(139, 74, 43, 0.08);
+  color: var(--ink);
+  border: 1px solid rgba(139, 74, 43, 0.12);
+}
+
+.footer-note {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1120px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .two-col,
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aside {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .main {
+    padding: 18px 14px 26px;
+  }
+
+  .sidebar {
+    padding: 18px 14px;
+  }
+
+  .hero,
+  .section,
+  .article {
+    padding: 22px 18px;
+  }
+
+  .article h1 {
+    font-size: 36px;
+  }
+
+  .article h2 {
+    font-size: 28px;
+  }
+}
+</style>
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-kicker">Standalone public portal</div>
+          <h1>Lapatanova</h1>
+          <p>One link, five reports, one downloadable bundle with the public-safe working files.</p>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">Sections</div>
+          <div class="nav-links">
+            <a class="nav-link" href="#external-brand-research">External Brand Research<small>Brand positioning, assortment structure, marketplace presence, and initial strategic hypotheses.</small></a><a class="nav-link" href="#competitor-revision">Competitor Revision<small>Price segmentation fix, direct and indirect competitors, and positioning matrix.</small></a><a class="nav-link" href="#business-direction">Business Direction<small>High-level strategy on where the business should grow next based on 12-month commercial data.</small></a><a class="nav-link" href="#abc-analysis">ABC Analysis<small>12-month ABC analysis by revenue, grouped at product/style level without size split.</small></a><a class="nav-link" href="#next-analytical-layer">Next Analytical Layer<small>XYZ, category analysis, repeat sales, stock signals, and SKU-level gross profit layer.</small></a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <div class="nav-label">Downloads</div>
+          <div class="download-links">
+            <a class="download-link" href="./lapatanova_public_bundle.zip">Public files bundle<small>Markdown reports and aggregated tables.</small></a>
+          </div>
+        </div>
+      </aside>
+      <main class="main">
+        <section class="hero">
+          <div class="hero-grid">
+            <div>
+              <span class="eyebrow">Public strategy package</span>
+              <h2>Lapatanova research portal</h2>
+              <p>
+                This page consolidates the external brand study, competitor correction, business-direction memo,
+                ABC analysis, and the next analytical layer into a single public artifact. All local file references
+                point to one downloadable bundle for non-technical readers.
+              </p>
+              <div class="cta-row">
+                <a class="button" href="#business-direction">Start with business direction</a>
+                <a class="button secondary" href="./lapatanova_public_bundle.zip">Download files bundle</a>
+              </div>
+            </div>
+            <div class="hero-stats">
+              <div class="stat"><strong>5</strong><span>report sections</span></div>
+              <div class="stat"><strong>1</strong><span>public bundle</span></div>
+              <div class="stat"><strong>12M</strong><span>latest internal analytics window</span></div>
+            </div>
+          </div>
+        </section>
+        <section class="section">
+          <h3>Included in this publication</h3>
+          <p>
+            Reports are fully readable on the page. Supporting files are bundled into one archive.
+            Raw MoySklad dumps, customer-level exports, and operational source tables are intentionally excluded.
+          </p>
+          <div class="card-grid">
+            <article class="page-card">
+              <div class="eyebrow">External research</div>
+              <h3>External Brand Research</h3>
+              <p>Brand positioning, assortment structure, marketplace presence, and initial strategic hypotheses.</p>
+              <div class="cta-row">
+                <a class="button" href="#external-brand-research">Jump to section</a>
+                <a class="button secondary" href="./lapatanova_public_bundle.zip">Files bundle</a>
+              </div>
+            </article>
+            
+            <article class="page-card">
+              <div class="eyebrow">External research</div>
+              <h3>Competitor Revision</h3>
+              <p>Price segmentation fix, direct and indirect competitors, and positioning matrix.</p>
+              <div class="cta-row">
+                <a class="button" href="#competitor-revision">Jump to section</a>
+                <a class="button secondary" href="./lapatanova_public_bundle.zip">Files bundle</a>
+              </div>
+            </article>
+            
+            <article class="page-card">
+              <div class="eyebrow">Internal analytics</div>
+              <h3>Business Direction</h3>
+              <p>High-level strategy on where the business should grow next based on 12-month commercial data.</p>
+              <div class="cta-row">
+                <a class="button" href="#business-direction">Jump to section</a>
+                <a class="button secondary" href="./lapatanova_public_bundle.zip">Files bundle</a>
+              </div>
+            </article>
+            
+            <article class="page-card">
+              <div class="eyebrow">Internal analytics</div>
+              <h3>ABC Analysis</h3>
+              <p>12-month ABC analysis by revenue, grouped at product/style level without size split.</p>
+              <div class="cta-row">
+                <a class="button" href="#abc-analysis">Jump to section</a>
+                <a class="button secondary" href="./lapatanova_public_bundle.zip">Files bundle</a>
+              </div>
+            </article>
+            
+            <article class="page-card">
+              <div class="eyebrow">Internal analytics</div>
+              <h3>Next Analytical Layer</h3>
+              <p>XYZ, category analysis, repeat sales, stock signals, and SKU-level gross profit layer.</p>
+              <div class="cta-row">
+                <a class="button" href="#next-analytical-layer">Jump to section</a>
+                <a class="button secondary" href="./lapatanova_public_bundle.zip">Files bundle</a>
+              </div>
+            </article>
+            </div>
+          <div class="notice">
+            Gross margin in the internal analytics is based on the agreed proxy model: estimated cost of goods sold equals 30% of selling price where factual cost is absent.
+          </div>
+        </section>
+        
+            <section class="section" id="external-brand-research">
+              <div class="two-col">
+                <article class="article">
+                  <div class="eyebrow">External research</div>
+                  <h1>Lapatanova: первичное внешнее исследование бренда</h1>
+<p>Дата фиксации: 2026-03-12<br/>
+Формат: внешняя аналитика без внутренних данных<br/>
+Фокус: бренд, сайт, ассортимент, маркетплейсы, предварительные конкуренты и гипотезы</p>
+<h2 id="методология-и-ограничения">Методология и ограничения</h2>
+<ul>
+<li>Основа отчета: официальный сайт <code>lapatanova.com</code>, HTML-структура сайта, публичная Tilda API-выгрузка каталога, а также открытые внешние источники.</li>
+<li>Для сайта использованы публично доступные данные по разделам, карточкам товаров, текстам бренда, контактам и структуре каталога.</li>
+<li>Для Wildberries дополнительно использован внешний аналитический сервис <code>wildbox.ru</code>, который прямо указывает, что считает данные из открытых источников и допускает погрешность.</li>
+<li>Для Ozon, Lamoda и части страниц Wildberries прямой доступ из среды был ограничен антибот-защитой. Поэтому присутствие бренда, найденные товары и часть атрибутов по этим площадкам зафиксированы по индексированным поисковым сниппетам и доступным публичным страницам. Такие случаи отдельно помечены.</li>
+<li>Количество товаров в подкатегориях ниже означает количество карточек в соответствующей витрине. Один и тот же товар может быть кросс-размещен в нескольких витринах.</li>
+<li>По дате основания бренда есть расхождение источников: на официальном сайте есть формулировка <code>13 лет бренду</code>, а на витрине Ламбада-маркета указано <code>бренд образовался в 2015 году</code>. Точный год основания в этом отчете не фиксируется как подтвержденный факт.</li>
+</ul>
+<h2 id="краткое-описание-бренда">Краткое описание бренда</h2>
+<h3 id="подтвержденные-факты">Подтвержденные факты</h3>
+<ul>
+<li><code>Lapatanova</code> позиционируется как бренд одежды <code>для девушек и женщин, кто ценит комфорт, качество, стиль</code>.</li>
+<li>На официальном сайте бренд описывает себя как <code>одежду для жизни</code>: для города, путешествий, офиса, театра, прогулок и повседневности.</li>
+<li>На сайте прямо заявлены:
+<ul>
+<li>трикотажное производство полного цикла;</li>
+<li>свой швейный цех;</li>
+<li>два офлайн-магазина;</li>
+<li>более <code>35 000</code> продаж на маркетплейсах;</li>
+<li>команда более <code>20</code> человек;</li>
+<li>более <code>10 000</code> уникальных клиентов.</li>
+</ul>
+</li>
+<li>У бренда есть минимум два действующих шоурума:
+<ul>
+<li>Москва, м. Трубная, Колокольников пер., д. 8, стр. 1;</li>
+<li>Королев, ул. Карла Маркса, 1а, пом. 509.</li>
+</ul>
+</li>
+<li>Помимо женской одежды на сайте есть отдельные разделы <code>Мужчинам</code>, <code>Детям</code>, <code>Аксессуары</code>, <code>Подарочные сертификаты</code>, а также капсульный раздел <code>Бабы Ёжины одежды</code>.</li>
+</ul>
+<h3 id="что-это-означает">Что это означает</h3>
+<ul>
+<li>По факту это не только маленький бренд трикотажа, а уже многокатегорийный fashion-бренд с D2C-сайтом, офлайном и маркетплейсами.</li>
+<li>Внутри бренда женская линия выглядит как основная, но бизнес уже расширен на family-like ассортимент и gift/accessories-направление.</li>
+</ul>
+<h2 id="позиционирование">Позиционирование</h2>
+<h3 id="что-бренд-транслирует-напрямую">Что бренд транслирует напрямую</h3>
+<ul>
+<li>Комфорт, качество, стиль.</li>
+<li>Комбинируемость вещей между собой и пригодность <code>на все случаи жизни</code>.</li>
+<li>Сочетание <code>современных трендов</code> и <code>базовых вещей</code>, которые можно носить <code>все сезоны</code>.</li>
+<li>Акцент на <code>натуральные ткани и пряжу</code>.</li>
+<li>Самовыражение: бренд прямо пишет про право быть <code>немного чересчур</code>.</li>
+<li>Эмоциональный слой: <code>жить красиво</code>, <code>быть собой</code>, <code>хорошая энергия</code>, сообщество, мероприятия, экскурсии на производство.</li>
+</ul>
+<h3 id="визуальный-и-продуктовый-язык">Визуальный и продуктовый язык</h3>
+<ul>
+<li>Сайт построен как fashion-витрина на Tilda с крупными визуальными блоками и сегментированным каталогом.</li>
+<li>В текстах и товарах постоянно встречаются яркие цветовые обозначения и игровые принты: <code>грибочки</code>, <code>ромашки</code>, <code>сердечки</code>, <code>клубнички</code>, <code>бантики</code>, <code>чешуйки</code>.</li>
+<li>Сам бренд отдельно выделяет <code>свитера с грибочками</code> и <code>яркие шапки</code>; также прямо говорит о <code>45 расцветках шапок и шарфов</code>.</li>
+</ul>
+<h3 id="вывод-по-позиционированию">Вывод по позиционированию</h3>
+<ul>
+<li>Фактически Lapatanova стоит на пересечении <code>доступного женского mid-market</code>, <code>яркого трикотажного бренда</code> и <code>лайфстайл-бренда с собственным производством</code>.</li>
+<li>Это не минималистичный quiet luxury и не масс-маркет в чистом виде. Подача ближе к эмоциональному, теплому, “живому” бренду с recognizable-knit hero products.</li>
+</ul>
+<h2 id="целевая-аудитория">Целевая аудитория</h2>
+<h3 id="подтверждено-сайтом">Подтверждено сайтом</h3>
+<ul>
+<li><code>Девушки и женщины</code>, которые ценят комфорт, качество и стиль.</li>
+<li>Носить вещи предлагается для города, офиса, путешествий, театра, прогулок и повседневной жизни.</li>
+</ul>
+<h3 id="предварительная-интерпретация">Предварительная интерпретация</h3>
+<ul>
+<li>Базовая аудитория выглядит как взрослая женская аудитория, которой нужны:
+<ul>
+<li>носибельные everyday-модели;</li>
+<li>яркий трикотаж с характером;</li>
+<li>понятный продукт для повторных покупок;</li>
+<li>комбинация <code>база + акцент</code>.</li>
+</ul>
+</li>
+<li>Наличие разделов <code>Мужчинам</code>, <code>Детям</code>, аксессуаров и подарочных сертификатов косвенно указывает на потенциал покупок <code>для себя + для семьи + в подарок</code>.</li>
+</ul>
+<h2 id="ассортимент">Ассортимент</h2>
+<h3 id="структура-каталога-на-сайте">Структура каталога на сайте</h3>
+<p>Основная навигация сайта включает:</p>
+<ul>
+<li><code>New</code></li>
+<li><code>Весна.. Весна? Весна!</code></li>
+<li><code>Верхняя одежда</code></li>
+<li><code>Трикотаж</code></li>
+<li><code>Sale</code></li>
+<li><code>Верх</code></li>
+<li><code>Низ</code></li>
+<li><code>Платья</code></li>
+<li><code>Мужчинам</code></li>
+<li><code>Детям</code></li>
+<li><code>Аксессуары</code></li>
+<li><code>Бабы Ёжины одежды</code></li>
+<li><code>Сертификаты</code></li>
+<li><code>Весь каталог</code></li>
+</ul>
+<h3 id="таблица-1-основные-разделы-сайта">Таблица 1. Основные разделы сайта</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Раздел</th>
+<th style="text-align:right">Что найдено</th>
+<th style="text-align:right">Уникальные товары в разделе</th>
+<th style="text-align:right">Цена, ₽</th>
+<th>Комментарий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Весь каталог</td>
+<td style="text-align:right">Полная витрина сайта</td>
+<td style="text-align:right">821</td>
+<td style="text-align:right">400 - 20 300</td>
+<td>Самая широкая публичная витрина бренда</td>
+</tr>
+<tr>
+<td>Верх</td>
+<td style="text-align:right">Топы, футболки, лонгсливы, джемперы, кардиганы/жакеты, жилеты, рубашки</td>
+<td style="text-align:right">157</td>
+<td style="text-align:right">750 - 9 200</td>
+<td>Один из главных повседневных блоков</td>
+</tr>
+<tr>
+<td>Низ</td>
+<td style="text-align:right">Брюки, джинсы/низ mix, юбки, шорты</td>
+<td style="text-align:right">97</td>
+<td style="text-align:right">1 000 - 8 200</td>
+<td>Сильная база для комплектов</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td style="text-align:right">Топы, футболки, лонгсливы, джемперы, кардиганы, принты, шерсть, брюки, юбки, шорты, платья</td>
+<td style="text-align:right">260</td>
+<td style="text-align:right">1 000 - 13 800</td>
+<td>Ключевой ассортиментный блок бренда</td>
+</tr>
+<tr>
+<td>Платья</td>
+<td style="text-align:right">Отдельная витрина платьев</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">2 500 - 13 800</td>
+<td>Отдельно вынесенная категория</td>
+</tr>
+<tr>
+<td>Верхняя одежда</td>
+<td style="text-align:right">Тренчи, пальто и др.</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">3 500 - 20 300</td>
+<td>Верхний ценовой tier сайта</td>
+</tr>
+<tr>
+<td>Аксессуары</td>
+<td style="text-align:right">Шапки, шарфы, снуды, пледы, сумки</td>
+<td style="text-align:right">108</td>
+<td style="text-align:right">400 - 6 900</td>
+<td>Сильная входная категория</td>
+</tr>
+<tr>
+<td>New</td>
+<td style="text-align:right">Новинки</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">3 600 - 8 200</td>
+<td>Ротационный блок новинок</td>
+</tr>
+<tr>
+<td>Весна… Весна? Весна!</td>
+<td style="text-align:right">Весенняя подборка/коллекция</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">3 500 - 12 900</td>
+<td>Есть явная сезонная коммуникация</td>
+</tr>
+<tr>
+<td>Sale</td>
+<td style="text-align:right">Уцененные товары</td>
+<td style="text-align:right">82</td>
+<td style="text-align:right">750 - 20 300</td>
+<td>Есть отдельная markdown-витрина</td>
+</tr>
+<tr>
+<td>Мужчинам</td>
+<td style="text-align:right">Мужская витрина</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">900 - 8 200</td>
+<td>Дополнительное направление</td>
+</tr>
+<tr>
+<td>Детям</td>
+<td style="text-align:right">Детская витрина</td>
+<td style="text-align:right">23</td>
+<td style="text-align:right">990 - 1 500</td>
+<td>Небольшая, но отдельная линия</td>
+</tr>
+<tr>
+<td>Бабы Ёжины одежды</td>
+<td style="text-align:right">Капсульная коллаборационная линия</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">4 600 - 6 400</td>
+<td>Узкая капсула/коллаборация</td>
+</tr>
+<tr>
+<td>Сертификаты</td>
+<td style="text-align:right">Подарочные сертификаты</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">3 000 - 10 000</td>
+<td>Gift/instrumental category</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="таблица-2-найденные-подкатегории">Таблица 2. Найденные подкатегории</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Блок</th>
+<th>Подкатегория</th>
+<th style="text-align:right">Товаров в витрине</th>
+<th style="text-align:right">Цена, ₽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Верх</td>
+<td>Топы</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">750 - 3 800</td>
+</tr>
+<tr>
+<td>Верх</td>
+<td>Футболки</td>
+<td style="text-align:right">41</td>
+<td style="text-align:right">1 000 - 6 200</td>
+</tr>
+<tr>
+<td>Верх</td>
+<td>Лонгсливы</td>
+<td style="text-align:right">17</td>
+<td style="text-align:right">1 000 - 6 800</td>
+</tr>
+<tr>
+<td>Верх</td>
+<td>Джемперы</td>
+<td style="text-align:right">70</td>
+<td style="text-align:right">1 500 - 6 600</td>
+</tr>
+<tr>
+<td>Верх</td>
+<td>Кардиганы/жакеты</td>
+<td style="text-align:right">17</td>
+<td style="text-align:right">2 500 - 8 600</td>
+</tr>
+<tr>
+<td>Верх</td>
+<td>Жилеты</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">2 500 - 7 200</td>
+</tr>
+<tr>
+<td>Верх</td>
+<td>Рубашки</td>
+<td style="text-align:right">22</td>
+<td style="text-align:right">3 500 - 9 200</td>
+</tr>
+<tr>
+<td>Низ</td>
+<td>Брюки трикотаж</td>
+<td style="text-align:right">13</td>
+<td style="text-align:right">2 300 - 4 600</td>
+</tr>
+<tr>
+<td>Низ</td>
+<td>Брюки/джинсы/низ mix</td>
+<td style="text-align:right">29</td>
+<td style="text-align:right">2 500 - 6 400</td>
+</tr>
+<tr>
+<td>Низ</td>
+<td>Юбки трикотаж</td>
+<td style="text-align:right">65</td>
+<td style="text-align:right">1 500 - 6 200</td>
+</tr>
+<tr>
+<td>Низ</td>
+<td>Юбки/низ mix</td>
+<td style="text-align:right">94</td>
+<td style="text-align:right">1 500 - 8 200</td>
+</tr>
+<tr>
+<td>Низ</td>
+<td>Шорты</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">1 000 - 5 800</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Топы</td>
+<td style="text-align:right">11</td>
+<td style="text-align:right">1 200 - 3 800</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Футболки</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">1 500 - 6 200</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Лонгсливы</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">1 000 - 6 200</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Джемперы</td>
+<td style="text-align:right">133</td>
+<td style="text-align:right">2 500 - 6 900</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Кардиганы</td>
+<td style="text-align:right">79</td>
+<td style="text-align:right">1 500 - 8 600</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Доп. блок свитеров/шерстяного трикотажа</td>
+<td style="text-align:right">26</td>
+<td style="text-align:right">2 500 - 7 600</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Жилеты/манишки</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">2 500 - 6 200</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Принты</td>
+<td style="text-align:right">73</td>
+<td style="text-align:right">1 500 - 7 200</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Брюки</td>
+<td style="text-align:right">13</td>
+<td style="text-align:right">2 300 - 4 600</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Юбки</td>
+<td style="text-align:right">65</td>
+<td style="text-align:right">1 500 - 6 200</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Шорты</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1 000 - 8 600</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Платья</td>
+<td style="text-align:right">29</td>
+<td style="text-align:right">3 640 - 13 800</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td>Шерсть</td>
+<td style="text-align:right">112</td>
+<td style="text-align:right">1 600 - 6 900</td>
+</tr>
+<tr>
+<td>Аксессуары</td>
+<td>Шапки</td>
+<td style="text-align:right">90</td>
+<td style="text-align:right">990 - 1 600</td>
+</tr>
+<tr>
+<td>Аксессуары</td>
+<td>Шарфы</td>
+<td style="text-align:right">57</td>
+<td style="text-align:right">2 600 - 4 600</td>
+</tr>
+<tr>
+<td>Аксессуары</td>
+<td>Снуды</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">400 - 800</td>
+</tr>
+<tr>
+<td>Аксессуары</td>
+<td>Пледы</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">6 900</td>
+</tr>
+<tr>
+<td>Аксессуары</td>
+<td>Сумки</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">3 900</td>
+</tr>
+<tr>
+<td>Sale</td>
+<td>Верх</td>
+<td style="text-align:right">46</td>
+<td style="text-align:right">750 - 5 320</td>
+</tr>
+<tr>
+<td>Sale</td>
+<td>Низ</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">1 000 - 4 000</td>
+</tr>
+<tr>
+<td>Sale</td>
+<td>Платья</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">2 500 - 3 640</td>
+</tr>
+<tr>
+<td>Sale</td>
+<td>Верхняя одежда</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">3 500 - 20 300</td>
+</tr>
+<tr>
+<td>Sale</td>
+<td>Посмотреть всё</td>
+<td style="text-align:right">99</td>
+<td style="text-align:right">750 - 12 900</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="что-можно-считать-core-products">Что можно считать core products</h3>
+<h4>Подтверждено напрямую</h4>
+<ul>
+<li>Трикотаж явно является ядром бренда:
+<ul>
+<li>бренд сам выделяет <code>трикотажное производство полного цикла</code>;</li>
+<li>на сайте есть большой отдельный раздел <code>Трикотаж</code>;</li>
+<li>в трикотажном блоке самые глубокие витрины: <code>джемперы</code> (133), <code>шерсть</code> (112), <code>кардиганы</code> (79), <code>принты</code> (73).</li>
+</ul>
+</li>
+<li>Аксессуары тоже входят в hero-ядро:
+<ul>
+<li>бренд сам пишет, что люди запоминают <code>свитера с грибочками и яркие шапки</code>;</li>
+<li>на сайте прямо указаны <code>45 расцветок шапок и шарфов</code>;</li>
+<li>по витрине аксессуаров особенно глубоки <code>шапки</code> (90) и <code>шарфы</code> (57).</li>
+</ul>
+</li>
+</ul>
+<h4>Эвристика по заголовкам товаров в <code>Весь каталог</code></h4>
+<p>Это не официальная категоризация, а быстрый количественный срез по названиям SKU:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Тип по заголовку</th>
+<th style="text-align:right">Кол-во SKU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Шапки</td>
+<td style="text-align:right">133</td>
+</tr>
+<tr>
+<td>Джемперы</td>
+<td style="text-align:right">118</td>
+</tr>
+<tr>
+<td>Юбки</td>
+<td style="text-align:right">95</td>
+</tr>
+<tr>
+<td>Шарфы</td>
+<td style="text-align:right">61</td>
+</tr>
+<tr>
+<td>Снуды</td>
+<td style="text-align:right">48</td>
+</tr>
+<tr>
+<td>Брюки</td>
+<td style="text-align:right">40</td>
+</tr>
+<tr>
+<td>Платья</td>
+<td style="text-align:right">39</td>
+</tr>
+<tr>
+<td>Футболки</td>
+<td style="text-align:right">35</td>
+</tr>
+<tr>
+<td>Свитеры</td>
+<td style="text-align:right">29</td>
+</tr>
+<tr>
+<td>Кардиганы</td>
+<td style="text-align:right">24</td>
+</tr>
+<tr>
+<td>Топы</td>
+<td style="text-align:right">23</td>
+</tr>
+<tr>
+<td>Джинсы</td>
+<td style="text-align:right">19</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="вывод-по-ассортименту">Вывод по ассортименту</h3>
+<ul>
+<li>Ассортимент широкий, но не равномерный.</li>
+<li>Самые сильные направления по глубине и узнаваемости:
+<ul>
+<li>трикотаж;</li>
+<li>шапки и шарфы;</li>
+<li>принтованный трикотаж;</li>
+<li>юбки;</li>
+<li>базовый верх для комплектов.</li>
+</ul>
+</li>
+<li>Платья и верхняя одежда выглядят как важные ticket-building категории, но не как главное ДНК бренда.</li>
+</ul>
+<h3 id="таблица-3-реперные-товары-с-сайта">Таблица 3. Реперные товары с сайта</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Раздел</th>
+<th>Товар</th>
+<th style="text-align:right">Цена, ₽</th>
+<th>Ссылка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New</td>
+<td>Джемпер Бантики бургунди с розовым</td>
+<td style="text-align:right">6 200</td>
+<td>https://lapatanova.com/new/tproduct/636345570-341794712732-dzhemper-bantiki-burgundi-s-rozovim</td>
+</tr>
+<tr>
+<td>Верх / Топы</td>
+<td>Топ на бретелях в пайетках черный</td>
+<td style="text-align:right">1 000</td>
+<td>https://lapatanova.com/upper/tproduct/636342351-957935126071-top-na-bretelyah-v-paietkah-chernii</td>
+</tr>
+<tr>
+<td>Верх / Футболки</td>
+<td>Футболка женская оверсайз с декором белая</td>
+<td style="text-align:right">2 900</td>
+<td>https://lapatanova.com/upper/tproduct/636342561-135903609161-futbolka-zhenskaya-oversaiz-s-dekorom-be</td>
+</tr>
+<tr>
+<td>Трикотаж / Джемперы</td>
+<td>Джемпер Клубнички женский бежевый</td>
+<td style="text-align:right">6 600</td>
+<td>https://lapatanova.com/upper/tproduct/767721351-624814510721-dzhemper-klubnichki-zhenskii-bezhevii</td>
+</tr>
+<tr>
+<td>Трикотаж / Принты</td>
+<td>Джемпер женский грибочки оранжевый-маренго</td>
+<td style="text-align:right">6 600</td>
+<td>https://lapatanova.com/upper/tproduct/767721351-491753226431-dzhemper-zhenskii-gribochki-oranzhevii-m</td>
+</tr>
+<tr>
+<td>Низ / Брюки</td>
+<td>Брюки трикотаж черный</td>
+<td style="text-align:right">4 600</td>
+<td>https://lapatanova.com/bottom/tproduct/767654988-360622903651-bryuki-trikotazh-chernii</td>
+</tr>
+<tr>
+<td>Платья</td>
+<td>Платье на запах муслин длинный рукав черный в горошек</td>
+<td style="text-align:right">3 100</td>
+<td>https://lapatanova.com/dresses/tproduct/829860646-413930088411-plate-na-zapah-muslin-dlinnii-rukav-cher</td>
+</tr>
+<tr>
+<td>Верхняя одежда</td>
+<td>Тренч женский светлый беж</td>
+<td style="text-align:right">11 800</td>
+<td>https://lapatanova.com/outerwear/tproduct/636339422-214843840901-trench-zhenskii-svetlii-bezh</td>
+</tr>
+<tr>
+<td>Аксессуары / Шапки</td>
+<td>Шапка детская хаки</td>
+<td style="text-align:right">990</td>
+<td>https://lapatanova.com/accessories/tproduct/636343714-201047714441-shapka-detskaya-haki</td>
+</tr>
+<tr>
+<td>Аксессуары / Шарфы</td>
+<td>Шарф взрослый брусника</td>
+<td style="text-align:right">2 600</td>
+<td>https://lapatanova.com/accessories/tproduct/636344230-179956469731-sharf-vzroslii-brusnika</td>
+</tr>
+<tr>
+<td>Мужчинам</td>
+<td>Шапка мужская бини серый</td>
+<td style="text-align:right">900</td>
+<td>https://lapatanova.com/accessories/tproduct/636343714-241556780111-shapka-muzhskaya-bini-serii</td>
+</tr>
+<tr>
+<td>Детям</td>
+<td>Джемпер детский Ромашки черный</td>
+<td style="text-align:right">1 500</td>
+<td>https://lapatanova.com/kids/tproduct/636338783-344539892571-dzhemper-detskii-romashki-chernii</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="ценовой-анализ">Ценовой анализ</h2>
+<h3 id="сайт-lapatanova-общий-срез">Сайт Lapatanova: общий срез</h3>
+<ul>
+<li>Минимальная цена в <code>Весь каталог</code>: <code>400 ₽</code></li>
+<li>25-й перцентиль: <code>1 500 ₽</code></li>
+<li>Медиана: <code>3 800 ₽</code></li>
+<li>75-й перцентиль: <code>6 200 ₽</code></li>
+<li>Максимальная цена: <code>20 300 ₽</code></li>
+</ul>
+<h3 id="таблица-4-цены-по-основным-категориям">Таблица 4. Цены по основным категориям</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Категория</th>
+<th style="text-align:right">Уникальные товары</th>
+<th style="text-align:right">Мин, ₽</th>
+<th style="text-align:right">Медиана, ₽</th>
+<th style="text-align:right">Макс, ₽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Верх</td>
+<td style="text-align:right">157</td>
+<td style="text-align:right">750</td>
+<td style="text-align:right">4 800</td>
+<td style="text-align:right">9 200</td>
+</tr>
+<tr>
+<td>Низ</td>
+<td style="text-align:right">97</td>
+<td style="text-align:right">1 000</td>
+<td style="text-align:right">4 600</td>
+<td style="text-align:right">8 200</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td style="text-align:right">260</td>
+<td style="text-align:right">1 000</td>
+<td style="text-align:right">4 600</td>
+<td style="text-align:right">13 800</td>
+</tr>
+<tr>
+<td>Платья</td>
+<td style="text-align:right">36</td>
+<td style="text-align:right">2 500</td>
+<td style="text-align:right">7 200</td>
+<td style="text-align:right">13 800</td>
+</tr>
+<tr>
+<td>Верхняя одежда</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">3 500</td>
+<td style="text-align:right">9 200</td>
+<td style="text-align:right">20 300</td>
+</tr>
+<tr>
+<td>Аксессуары</td>
+<td style="text-align:right">108</td>
+<td style="text-align:right">400</td>
+<td style="text-align:right">1 200</td>
+<td style="text-align:right">6 900</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="интерпретация">Интерпретация</h3>
+<ul>
+<li>По сайту бренд находится в <code>среднем</code> сегменте с низким входом через аксессуары и более высоким чеком через верхнюю одежду.</li>
+<li>Основная ценовая масса сидит примерно в коридоре <code>1 500 - 6 200 ₽</code>.</li>
+<li>Самый дешевый вход в бренд дают снуды, шапки и отдельные sale-позиции.</li>
+<li>Верхняя одежда и отдельные платья поднимают потолок чека до <code>13 800 - 20 300 ₽</code>.</li>
+</ul>
+<h2 id="маркетплейсы-и-внешнее-присутствие">Маркетплейсы и внешнее присутствие</h2>
+<h3 id="что-подтверждено">Что подтверждено</h3>
+<ul>
+<li><code>Wildberries</code>: бренд найден.</li>
+<li><code>Ozon</code>: бренд найден.</li>
+<li><code>Lamoda</code>: бренд найден.</li>
+<li><code>Ламбада-маркет</code>: найден отдельный магазин бренда.</li>
+<li>Дополнительно найдены <code>VK</code>, <code>Telegram</code> и публичные следы в Instagram.</li>
+</ul>
+<h3 id="важное-ограничение">Важное ограничение</h3>
+<ul>
+<li>Для <code>Wildberries</code>, <code>Ozon</code> и <code>Lamoda</code> прямые страницы в среде просмотра частично закрывались антиботом.</li>
+<li>Поэтому ниже разделены:
+<ul>
+<li><code>подтверждено напрямую</code> через доступную страницу;</li>
+<li><code>подтверждено по поисковому сниппету</code>;</li>
+<li><code>н/д</code>, если цену/рейтинг/отзывы снаружи подтвердить не удалось.</li>
+</ul>
+</li>
+</ul>
+<h3 id="таблица-5-сводка-по-площадкам">Таблица 5. Сводка по площадкам</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Площадка</th>
+<th>Статус</th>
+<th>Что подтверждено</th>
+<th>Цены/скидки</th>
+<th>Рейтинг/отзывы</th>
+<th>Комментарий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wildberries</td>
+<td>Подтверждено</td>
+<td>Брендовая страница, товарные карточки и аналитика бренда через Wildbox</td>
+<td>Да, частично</td>
+<td>Да, частично</td>
+<td>Самое количественно подтвержденное внешнее присутствие</td>
+</tr>
+<tr>
+<td>Ozon</td>
+<td>Подтверждено</td>
+<td>Брендовая страница и несколько товарных карточек найдены по открытым сниппетам</td>
+<td>Частично</td>
+<td>Н/д по цифрам</td>
+<td>Есть отдельная брендовая выдача и товарные карточки</td>
+</tr>
+<tr>
+<td>Lamoda</td>
+<td>Подтверждено</td>
+<td>Брендовая страница, женская витрина, мужские аксессуары, отдельная карточка шапки</td>
+<td>Н/д</td>
+<td>Н/д</td>
+<td>Присутствие подтверждено, но без внешне доступных цифр</td>
+</tr>
+<tr>
+<td>Ламбада-маркет</td>
+<td>Подтверждено напрямую</td>
+<td>Отдельный магазин бренда и несколько live-товаров</td>
+<td>Да</td>
+<td>Н/д</td>
+<td>Дополнительный внешний канал дистрибуции/витрины</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="таблица-6-найденные-товары-и-сигналы-по-внешним-площадкам">Таблица 6. Найденные товары и сигналы по внешним площадкам</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Площадка</th>
+<th>Что найдено</th>
+<th>Категория</th>
+<th style="text-align:right">Цена</th>
+<th style="text-align:right">Скидка</th>
+<th>Рейтинг</th>
+<th style="text-align:right">Отзывы</th>
+<th>Примечание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wildberries / Wildbox</td>
+<td>Бренд <code>LAPATANOVA</code></td>
+<td>Брендовая аналитика</td>
+<td style="text-align:right">н/д</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">468</td>
+<td>По Wildbox: 65 артикулов, 855 добавлений в избранное, отзывы бренда 468</td>
+</tr>
+<tr>
+<td>Wildberries / Wildbox</td>
+<td>Кардиган, арт. <code>30322686</code></td>
+<td>Верх</td>
+<td style="text-align:right">2 197 ₽</td>
+<td style="text-align:right">59,31%</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Топ-товар бренда в аналитике Wildbox</td>
+</tr>
+<tr>
+<td>Wildberries / Wildbox</td>
+<td>Свитер, арт. <code>99882872</code></td>
+<td>Трикотаж</td>
+<td style="text-align:right">3 667 ₽</td>
+<td style="text-align:right">40,86%</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Топ-товар бренда в аналитике Wildbox</td>
+</tr>
+<tr>
+<td>Wildberries / Wildbox</td>
+<td>Кардиган, арт. <code>76592239</code></td>
+<td>Верх</td>
+<td style="text-align:right">3 036 ₽</td>
+<td style="text-align:right">53,57%</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Топ-товар бренда в аналитике Wildbox</td>
+</tr>
+<tr>
+<td>Wildberries / Wildbox</td>
+<td>Вязаная шапка женская осень-весна бини, арт. <code>49846929</code></td>
+<td>Аксессуары</td>
+<td style="text-align:right">959 ₽</td>
+<td style="text-align:right">46,39%</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Топ-товар бренда в аналитике Wildbox</td>
+</tr>
+<tr>
+<td>Wildberries / Wildbox</td>
+<td>Вязаная шапка женская осень-весна бини, арт. <code>49888139</code></td>
+<td>Аксессуары</td>
+<td style="text-align:right">1 061 ₽</td>
+<td style="text-align:right">40,71%</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Топ-товар бренда в аналитике Wildbox</td>
+</tr>
+<tr>
+<td>Wildberries / Wildbox</td>
+<td>Вязаная шапка женская осень-весна бини, арт. <code>49884220</code></td>
+<td>Аксессуары</td>
+<td style="text-align:right">1 023 ₽</td>
+<td style="text-align:right">42,82%</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Топ-товар бренда в аналитике Wildbox</td>
+</tr>
+<tr>
+<td>Wildberries / сниппет</td>
+<td>Вязаная шапка мужская шапка бини с отворотом, арт. <code>150416365</code></td>
+<td>Мужские аксессуары</td>
+<td style="text-align:right">1 534 ₽</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Цена подтверждена поисковым сниппетом</td>
+</tr>
+<tr>
+<td>Ozon / сниппет</td>
+<td>Бренд <code>Lapatanova</code></td>
+<td>Брендовая страница</td>
+<td style="text-align:right">н/д</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Сниппет показывает типы <code>шапка</code>, <code>джемпер</code>, <code>свитер</code> и ценовые фильтры до 1 500 / 1 500-7 500 / 7 500+</td>
+</tr>
+<tr>
+<td>Ozon / сниппет</td>
+<td><code>Шапка Lapatanova</code> (<code>887899925</code>)</td>
+<td>Аксессуары</td>
+<td style="text-align:right">н/д</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>В сниппете указано, что есть реальные отзывы покупателей</td>
+</tr>
+<tr>
+<td>Ozon / сниппет</td>
+<td><code>Шапка Lapatanova</code> (<code>744066668</code>)</td>
+<td>Аксессуары</td>
+<td style="text-align:right">н/д</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Карточка индексируется в поиске</td>
+</tr>
+<tr>
+<td>Ozon / сниппет</td>
+<td><code>Джемпер женский оверсайз из хлопка с принтом</code> (<code>3588601387</code>)</td>
+<td>Трикотаж</td>
+<td style="text-align:right">н/д</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Карточка индексируется в поиске</td>
+</tr>
+<tr>
+<td>Lamoda / сниппет</td>
+<td><code>Женская одежда, обувь и аксессуары Lapatanova</code></td>
+<td>Брендовая витрина</td>
+<td style="text-align:right">н/д</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Наличие большого ассортимента подтверждено сниппетом</td>
+</tr>
+<tr>
+<td>Lamoda / сниппет</td>
+<td><code>Женские платки и шарфы Lapatanova</code></td>
+<td>Аксессуары</td>
+<td style="text-align:right">н/д</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Подтверждает присутствие внутри подкатегории аксессуаров</td>
+</tr>
+<tr>
+<td>Lamoda / сниппет</td>
+<td><code>Шапка Lapatanova</code>, <code>MP002XW0SF3G</code></td>
+<td>Аксессуары</td>
+<td style="text-align:right">н/д</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>В сниппете указана коллекция <code>Осень-зима 2025/2026</code></td>
+</tr>
+<tr>
+<td>Ламбада-маркет</td>
+<td>Магазин <code>LAPATANOVA</code></td>
+<td>Storefront</td>
+<td style="text-align:right">н/д</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Продавец: Россия, Королев; регистрация на площадке 12.10.2023</td>
+</tr>
+<tr>
+<td>Ламбада-маркет</td>
+<td><code>Рубашка из тенсела</code></td>
+<td>Женская одежда</td>
+<td style="text-align:right">5 400 ₽</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Цена подтверждена прямо в HTML страницы</td>
+</tr>
+<tr>
+<td>Ламбада-маркет</td>
+<td><code>Яркий и неповторимый джемпер Сердечки</code></td>
+<td>Женская одежда / трикотаж</td>
+<td style="text-align:right">6 200 ₽</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Цена подтверждена прямо в HTML страницы</td>
+</tr>
+<tr>
+<td>Ламбада-маркет</td>
+<td><code>Двусторонний джемпер чешуйки</code></td>
+<td>Женская одежда / трикотаж</td>
+<td style="text-align:right">6 200 ₽</td>
+<td style="text-align:right">н/д</td>
+<td>н/д</td>
+<td style="text-align:right">н/д</td>
+<td>Цена подтверждена прямо в HTML страницы</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="признаки-спроса-и-активности-вне-собственного-сайта">Признаки спроса и активности вне собственного сайта</h3>
+<ul>
+<li>Самый сильный внешний сигнал дает сам официальный сайт: бренд заявляет <code>более 35 000 продаж на маркетплейсах</code>.</li>
+<li>По Wildbox на Wildberries у бренда:
+<ul>
+<li><code>65</code> артикулов;</li>
+<li><code>855</code> добавлений в избранное;</li>
+<li><code>468</code> отзывов.</li>
+</ul>
+</li>
+<li>По топ-категориям Wildbox видно, что лучше всего работают:
+<ul>
+<li><code>Женщинам</code> со средней ценой со скидкой <code>1 701 ₽</code>;</li>
+<li><code>Подарки женщинам / Головные уборы</code> около <code>1 165 ₽</code>;</li>
+<li><code>Женщинам / Офис</code> около <code>2 276 ₽</code>;</li>
+<li><code>Женщинам / Джемперы, водолазки и кардиганы</code> около <code>2 420-2 521 ₽</code>.</li>
+</ul>
+</li>
+<li>Это выглядит как реальное, а не номинальное присутствие бренда на маркетплейсах.</li>
+</ul>
+<h2 id="прочие-внешние-сигналы">Прочие внешние сигналы</h2>
+<ul>
+<li>В Telegram найден публичный канал/витрина <code>@lapatanova_clothes</code> с описанием: бренд для тех, кто ценит комфорт, качество, стиль; вещи на все случаи жизни; собственное производство.</li>
+<li>В поисковой выдаче найдено VK-сообщество бренда с прямой формулировкой о собственном трикотажном производстве и швейном цехе в Королеве.</li>
+<li>В поисковой выдаче также находятся:
+<ul>
+<li><code>reviews.yandex.ru/shop/lapatanova.com</code> с <code>19</code> отзывами об интернет-магазине;</li>
+<li>карточка шоурума на Яндекс Картах с рейтингом <code>4,8</code> на основе <code>26</code> оценок и <code>14</code> отзывов.</li>
+</ul>
+</li>
+</ul>
+<h2 id="конкуренты">Конкуренты</h2>
+<p>Ниже не “окончательный список”, а первичный конкурентный пул на основе пересечения по ассортименту, канальной модели и подаче.</p>
+<h3 id="прямые-и-близкие-конкуренты">Прямые и близкие конкуренты</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Бренд</th>
+<th>Тип конкуренции</th>
+<th>Почему похож</th>
+<th>Что подтверждено открытыми источниками</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BRUSNIKA</td>
+<td>Прямой/близкий</td>
+<td>Женская одежда, собственное производство в России, акцент на натуральные материалы, широкий multi-category каталог, сильный трикотажный слой</td>
+<td>Официальный сайт говорит о собственном современном производстве; есть Lamoda-витрина; в навигации есть <code>Трикотажные комплекты</code>, <code>Деним</code>, <code>Верхняя одежда</code>, <code>Платья</code>, <code>Джемперы</code></td>
+</tr>
+<tr>
+<td>TOTTI</td>
+<td>Прямой/канальный</td>
+<td>Очень похожая омниканальная модель: собственный сайт + Ozon + Wildberries + Lamoda; широкий женский ассортимент и сильный аксессуарный/трикотажный слой</td>
+<td>Официальный сайт: <code>Трикотаж</code>, <code>Платья</code>, <code>Жакеты и жилеты</code>, <code>Брюки и юбки</code>, <code>Джинсы</code>, <code>Головные уборы</code>, <code>Шарфы</code>; по поисковой выдаче бренд представлен на Ozon, Wildberries и Lamoda</td>
+</tr>
+<tr>
+<td>MIRSTORES</td>
+<td>Прямой по продукту, чуть более premium benchmark</td>
+<td>Сильный knitwear-first бренд с ярко выраженным ДНК трикотажа и капсульностью</td>
+<td>Официальный сайт: <code>свитеры</code>, <code>кардиганы</code>, <code>жилеты</code>, <code>аксессуары</code>, <code>аутлет</code>, тематические капсулы; есть Lamoda-витрина</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="косвенные-конкуренты">Косвенные конкуренты</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Бренд</th>
+<th>Тип конкуренции</th>
+<th>Почему похож</th>
+<th>Что подтверждено открытыми источниками</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LIME</td>
+<td>Косвенный</td>
+<td>Большой женский fashion-ассортимент, сильный D2C и присутствие на Lamoda; скорее benchmark по ассортиментной ширине и визуальной дисциплине</td>
+<td>Есть официальный store и брендовая витрина на Lamoda</td>
+</tr>
+<tr>
+<td>LOVE REPUBLIC</td>
+<td>Косвенный</td>
+<td>Женская одежда с регулярными дропами, сильный fashion-retail и Lamoda; конкурирует за часть той же женской аудитории по occasion/basic wardrobe</td>
+<td>Официальный сайт пишет про <code>более 100 новинок каждую неделю</code>; бренд представлен на Lamoda</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="комментарий-по-конкурентному-ландшафту">Комментарий по конкурентному ландшафту</h3>
+<ul>
+<li><code>BRUSNIKA</code> и <code>TOTTI</code> выглядят наиболее полезными для следующего шага детального сравнения.</li>
+<li><code>MIRSTORES</code> полезен как benchmark по трикотажному ДНК и капсульности.</li>
+<li><code>LIME</code> и <code>LOVE REPUBLIC</code> полезны как косвенные ориентиры по ассортиментной архитектуре, мерчендайзингу и retail-ритму.</li>
+<li>Для точного price-to-price сравнения конкурентов нужен отдельный ценовой замер по сопоставимым SKU.</li>
+</ul>
+<h2 id="первичные-стратегические-выводы">Первичные стратегические выводы</h2>
+<h3 id="подтверждено-фактами">Подтверждено фактами</h3>
+<ul>
+<li>У бренда есть сильные признаки собственной производственной базы, а не только контрактного пошива:
+<ul>
+<li>трикотажное производство полного цикла;</li>
+<li>свой швейный цех;</li>
+<li>коммуникация вокруг экскурсий на производство;</li>
+<li>многослойный трикотажный ассортимент.</li>
+</ul>
+</li>
+<li>Бизнес уже работает как гибрид:
+<ul>
+<li>собственный сайт;</li>
+<li>офлайн-шоурумы;</li>
+<li>маркетплейсы;</li>
+<li>дополнительные внешние витрины.</li>
+</ul>
+</li>
+<li>Ассортимент очень широкий: от снудов за <code>400 ₽</code> до верхней одежды за <code>20 300 ₽</code>.</li>
+<li>Самое узнаваемое ДНК бренда находится в трикотаже, шапках/шарфах и ярких принтах.</li>
+</ul>
+<h3 id="предварительные-гипотезы">Предварительные гипотезы</h3>
+<ul>
+<li>Текущая бизнес-модель, вероятно, строится как <code>hybrid D2C + showrooms + marketplaces</code>.</li>
+<li>Собственный сайт, скорее всего, работает как:
+<ul>
+<li>full-price витрина;</li>
+<li>брендовый медиа-слой;</li>
+<li>место для всей глубины ассортимента, капсул и истории бренда.</li>
+</ul>
+</li>
+<li>Маркетплейсы, вероятно, используются как:
+<ul>
+<li>канал массового охвата;</li>
+<li>канал первого знакомства;</li>
+<li>канал оборота на repeatable SKU, особенно в шапках, шарфах, джемперах и базовом трикотаже.</li>
+</ul>
+</li>
+<li>У бренда уже есть хорошие признаки repeat-модели:
+<ul>
+<li>широкие цветовые линейки;</li>
+<li>сильные повторяемые product forms: шапки, шарфы, джемперы, юбки, кардиганы;</li>
+<li>сезонные и капсульные поводы для обновления.</li>
+</ul>
+</li>
+<li>При этом ассортиментная ширина очень большая. На следующем этапе имеет смысл проверить, не размывает ли эта ширина главную точку отличия бренда.</li>
+</ul>
+<h2 id="на-что-обратить-внимание-на-следующем-этапе">На что обратить внимание на следующем этапе</h2>
+<ul>
+<li>Свести <code>821</code> SKU в рабочую ассортиментную матрицу с полями <code>SKU / категория / материал / цена / канал / сезон / sale / gender / kids / prints</code>.</li>
+<li>Отдельно разнести:
+<ul>
+<li><code>hero-товары</code>;</li>
+<li><code>traffic-driving</code> маркетплейсные SKU;</li>
+<li><code>margin-driving</code> D2C SKU;</li>
+<li><code>image-building</code> капсулы и принты.</li>
+</ul>
+</li>
+<li>Сделать следующий слой анализа:
+<ul>
+<li>price architecture;</li>
+<li>сравнение с 2-3 прямыми конкурентами по категориям и SKU;</li>
+<li>marketplace assortment overlap;</li>
+<li>оценка, какие категории являются core, growth и support.</li>
+</ul>
+</li>
+</ul>
+<h2 id="источники">Источники</h2>
+<h3 id="официальный-сайт-lapatanova">Официальный сайт Lapatanova</h3>
+<ul>
+<li><a href="https://lapatanova.com/" rel="noopener noreferrer" target="_blank">Главная</a></li>
+<li><a href="https://lapatanova.com/brand" rel="noopener noreferrer" target="_blank">О бренде</a></li>
+<li><a href="https://lapatanova.com/contacts" rel="noopener noreferrer" target="_blank">Контакты</a></li>
+<li><a href="https://lapatanova.com/all-catalog" rel="noopener noreferrer" target="_blank">Весь каталог</a></li>
+<li><a href="https://lapatanova.com/upper" rel="noopener noreferrer" target="_blank">Верх</a></li>
+<li><a href="https://lapatanova.com/bottom" rel="noopener noreferrer" target="_blank">Низ</a></li>
+<li><a href="https://lapatanova.com/tricot" rel="noopener noreferrer" target="_blank">Трикотаж</a></li>
+<li><a href="https://lapatanova.com/dresses" rel="noopener noreferrer" target="_blank">Платья</a></li>
+<li><a href="https://lapatanova.com/outerwear" rel="noopener noreferrer" target="_blank">Верхняя одежда</a></li>
+<li><a href="https://lapatanova.com/accessories" rel="noopener noreferrer" target="_blank">Аксессуары</a></li>
+<li><a href="https://lapatanova.com/sales" rel="noopener noreferrer" target="_blank">Sale</a></li>
+<li><a href="https://lapatanova.com/new" rel="noopener noreferrer" target="_blank">New</a></li>
+<li><a href="https://lapatanova.com/season" rel="noopener noreferrer" target="_blank">Весна… Весна? Весна!</a></li>
+<li><a href="https://lapatanova.com/mens" rel="noopener noreferrer" target="_blank">Мужчинам</a></li>
+<li><a href="https://lapatanova.com/kids" rel="noopener noreferrer" target="_blank">Детям</a></li>
+<li><a href="https://lapatanova.com/babayaga" rel="noopener noreferrer" target="_blank">Бабы Ёжины одежды</a></li>
+<li><a href="https://lapatanova.com/care_of_products" rel="noopener noreferrer" target="_blank">Уход за изделиями</a></li>
+</ul>
+<h3 id="внешние-площадки-и-открытые-источники">Внешние площадки и открытые источники</h3>
+<ul>
+<li><a href="https://wildbox.ru/brand-analytics/lapatanova" rel="noopener noreferrer" target="_blank">Wildbox: аналитика бренда LAPATANOVA на Wildberries</a></li>
+<li><a href="https://www.wildberries.ru/brands/lapatanova" rel="noopener noreferrer" target="_blank">Wildberries: бренд Lapatanova</a></li>
+<li><a href="https://www.wildberries.ru/catalog/150416365/detail.aspx" rel="noopener noreferrer" target="_blank">Wildberries: товар 150416365</a></li>
+<li><a href="https://www.ozon.ru/brand/lapatanova-100462836/" rel="noopener noreferrer" target="_blank">Ozon: бренд Lapatanova</a></li>
+<li><a href="https://www.ozon.ru/product/shapka-lapatanova-887899925/" rel="noopener noreferrer" target="_blank">Ozon: товар 887899925</a></li>
+<li><a href="https://www.ozon.ru/product/shapka-lapatanova-744066668/" rel="noopener noreferrer" target="_blank">Ozon: товар 744066668</a></li>
+<li><a href="https://www.ozon.ru/product/dzhemper-lapatanova-3588601387/" rel="noopener noreferrer" target="_blank">Ozon: товар 3588601387</a></li>
+<li><a href="https://www.lamoda.ru/cb/4153-37882/default-women-lapatanova/" rel="noopener noreferrer" target="_blank">Lamoda: женская витрина Lapatanova</a></li>
+<li><a href="https://www.lamoda.ru/cb/683-37882/scarfs-platki-i-sharfy-lapatanova/" rel="noopener noreferrer" target="_blank">Lamoda: женские платки и шарфы Lapatanova</a></li>
+<li><a href="https://www.lamoda.ru/p/mp002xw0sf3g/accs-lapatanova-shapka/" rel="noopener noreferrer" target="_blank">Lamoda: шапка MP002XW0SF3G</a></li>
+<li><a href="https://lmbd.ru/lapatanova-clothes/" rel="noopener noreferrer" target="_blank">Ламбада-маркет: магазин Lapatanova</a></li>
+<li><a href="https://t.me/lapatanova_clothes" rel="noopener noreferrer" target="_blank">Telegram: @lapatanova_clothes</a></li>
+<li><a href="https://vk.com/lapatanova_clothes" rel="noopener noreferrer" target="_blank">VK: Lapatanova Clothes</a></li>
+<li><a href="https://reviews.yandex.ru/shop/lapatanova.com" rel="noopener noreferrer" target="_blank">Yandex Reviews: lapatanova.com</a></li>
+<li><a href="https://yandex.ru/maps/org/lapatanova/2985664907/reviews/" rel="noopener noreferrer" target="_blank">Yandex Maps: шоурум Lapatanova</a></li>
+</ul>
+<h3 id="конкурентные-ориентиры">Конкурентные ориентиры</h3>
+<ul>
+<li><a href="https://brusnikabrand.com/" rel="noopener noreferrer" target="_blank">BRUSNIKA</a></li>
+<li><a href="https://www.lamoda.ru/cb/4153-25235/default-women-brusnika/" rel="noopener noreferrer" target="_blank">BRUSNIKA на Lamoda</a></li>
+<li><a href="https://totti-shop.ru/" rel="noopener noreferrer" target="_blank">TOTTI</a></li>
+<li><a href="https://www.ozon.ru/category/odezhda-obuv-i-aksessuary-7500/totti-84148463/" rel="noopener noreferrer" target="_blank">TOTTI на Ozon</a></li>
+<li><a href="https://www.wildberries.ru/brands/totti" rel="noopener noreferrer" target="_blank">TOTTI на Wildberries</a></li>
+<li><a href="https://www.lamoda.ru/b/29877/brand-totti-/" rel="noopener noreferrer" target="_blank">TOTTI на Lamoda</a></li>
+<li><a href="https://mirstores.ru/" rel="noopener noreferrer" target="_blank">MIRSTORES</a></li>
+<li><a href="https://www.lamoda.ru/b/25773/brand-mirstores/" rel="noopener noreferrer" target="_blank">MIRSTORES на Lamoda</a></li>
+<li><a href="https://limestore.com/ru_ru" rel="noopener noreferrer" target="_blank">LIME</a></li>
+<li><a href="https://www.lamoda.ru/b/27369/brand-lime/" rel="noopener noreferrer" target="_blank">LIME на Lamoda</a></li>
+<li><a href="https://loverepublic.ru/" rel="noopener noreferrer" target="_blank">LOVE REPUBLIC</a></li>
+<li><a href="https://www.lamoda.ru/b/22319/brand-loverepublic/" rel="noopener noreferrer" target="_blank">LOVE REPUBLIC на Lamoda</a></li>
+</ul>
+
+                </article>
+                <aside class="aside">
+                  <div class="aside-card">
+                    <h4>Report</h4>
+                    <p>External Brand Research</p>
+                    <div class="cta-row">
+                      <a class="button secondary" href="./lapatanova_public_bundle.zip">Download files</a>
+                    </div>
+                  </div>
+                  <div class="aside-card">
+                    <h4>Contents</h4>
+                    <div class="toc-links"><a class="toc-link" href="#методология-и-ограничения">Методология и ограничения</a><a class="toc-link" href="#краткое-описание-бренда">Краткое описание бренда</a><a class="toc-link" href="#подтвержденные-факты">Подтвержденные факты</a><a class="toc-link" href="#что-это-означает">Что это означает</a><a class="toc-link" href="#позиционирование">Позиционирование</a><a class="toc-link" href="#что-бренд-транслирует-напрямую">Что бренд транслирует напрямую</a><a class="toc-link" href="#визуальный-и-продуктовый-язык">Визуальный и продуктовый язык</a><a class="toc-link" href="#вывод-по-позиционированию">Вывод по позиционированию</a><a class="toc-link" href="#целевая-аудитория">Целевая аудитория</a><a class="toc-link" href="#подтверждено-сайтом">Подтверждено сайтом</a><a class="toc-link" href="#предварительная-интерпретация">Предварительная интерпретация</a><a class="toc-link" href="#ассортимент">Ассортимент</a><a class="toc-link" href="#структура-каталога-на-сайте">Структура каталога на сайте</a><a class="toc-link" href="#таблица-1-основные-разделы-сайта">Таблица 1. Основные разделы сайта</a><a class="toc-link" href="#таблица-2-найденные-подкатегории">Таблица 2. Найденные подкатегории</a><a class="toc-link" href="#что-можно-считать-core-products">Что можно считать core products</a><a class="toc-link" href="#вывод-по-ассортименту">Вывод по ассортименту</a><a class="toc-link" href="#таблица-3-реперные-товары-с-сайта">Таблица 3. Реперные товары с сайта</a><a class="toc-link" href="#ценовой-анализ">Ценовой анализ</a><a class="toc-link" href="#сайт-lapatanova-общий-срез">Сайт Lapatanova: общий срез</a><a class="toc-link" href="#таблица-4-цены-по-основным-категориям">Таблица 4. Цены по основным категориям</a><a class="toc-link" href="#интерпретация">Интерпретация</a><a class="toc-link" href="#маркетплейсы-и-внешнее-присутствие">Маркетплейсы и внешнее присутствие</a><a class="toc-link" href="#что-подтверждено">Что подтверждено</a><a class="toc-link" href="#важное-ограничение">Важное ограничение</a><a class="toc-link" href="#таблица-5-сводка-по-площадкам">Таблица 5. Сводка по площадкам</a><a class="toc-link" href="#таблица-6-найденные-товары-и-сигналы-по-внешним-площадкам">Таблица 6. Найденные товары и сигналы по внешним площадкам</a><a class="toc-link" href="#признаки-спроса-и-активности-вне-собственного-сайта">Признаки спроса и активности вне собственного сайта</a><a class="toc-link" href="#прочие-внешние-сигналы">Прочие внешние сигналы</a><a class="toc-link" href="#конкуренты">Конкуренты</a><a class="toc-link" href="#прямые-и-близкие-конкуренты">Прямые и близкие конкуренты</a><a class="toc-link" href="#косвенные-конкуренты">Косвенные конкуренты</a><a class="toc-link" href="#комментарий-по-конкурентному-ландшафту">Комментарий по конкурентному ландшафту</a><a class="toc-link" href="#первичные-стратегические-выводы">Первичные стратегические выводы</a><a class="toc-link" href="#подтверждено-фактами">Подтверждено фактами</a><a class="toc-link" href="#предварительные-гипотезы">Предварительные гипотезы</a><a class="toc-link" href="#на-что-обратить-внимание-на-следующем-этапе">На что обратить внимание на следующем этапе</a><a class="toc-link" href="#источники">Источники</a><a class="toc-link" href="#официальный-сайт-lapatanova">Официальный сайт Lapatanova</a><a class="toc-link" href="#внешние-площадки-и-открытые-источники">Внешние площадки и открытые источники</a><a class="toc-link" href="#конкурентные-ориентиры">Конкурентные ориентиры</a></div>
+                  </div>
+                </aside>
+              </div>
+            </section>
+            
+            <section class="section" id="competitor-revision">
+              <div class="two-col">
+                <article class="article">
+                  <div class="eyebrow">External research</div>
+                  <h1>Lapatanova: ревизия ценового сегмента и конкурентного анализа</h1>
+<p>Дата фиксации: 2026-03-12<br/>
+Цель: исправить конкурентный анализ через точную фиксацию ценового сегмента бренда</p>
+<h2 id="что-было-скорректировано">Что было скорректировано</h2>
+<p>В первом приближении в конкурентный пул попали бренды, которые частично стоят выше Lapatanova по чеку.<br/>
+В этой ревизии логика такая:</p>
+<ol>
+<li>сначала фиксируется реальный ценовой контур Lapatanova;</li>
+<li>затем определяется сегмент бренда;</li>
+<li>после этого собираются только те конкуренты, которые действительно находятся рядом по цене, стилю и продуктовой матрице.</li>
+</ol>
+<h2 id="методика-расчета-цен-lapatanova">Методика расчета цен Lapatanova</h2>
+<ul>
+<li>Основа: полный публичный каталог Lapatanova через Tilda API, <code>821</code> уникальный SKU в разделе <code>Весь каталог</code>.</li>
+<li>Для разделов, которые есть на сайте в явном виде, использованы section-данные:
+<ul>
+<li><code>Костюмы</code></li>
+<li><code>Трикотаж</code></li>
+<li><code>Верхняя одежда</code></li>
+<li><code>Аксессуары</code></li>
+</ul>
+</li>
+<li>Для продуктовых типов, которые нужно выделить отдельно, использована чистая классификация по началу названия SKU:
+<ul>
+<li><code>Платье</code></li>
+<li><code>Юбка</code></li>
+<li><code>Брюки / Джинсы / Лосины / Леггинсы</code></li>
+<li><code>Топ / Майка / Рубашка / Блуза</code></li>
+<li><code>Футболка / Лонгслив / Тельняшка</code></li>
+</ul>
+</li>
+<li>Категории в таблице ниже не являются взаимоисключающими и не должны суммироваться между собой.</li>
+<li>Цены в таблице — текущие live-цены на сайте на дату фиксации.</li>
+</ul>
+<h2 id="ценовой-диапазон-lapatanova">Ценовой диапазон Lapatanova</h2>
+<h3 id="общий-срез">Общий срез</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Показатель</th>
+<th style="text-align:right">Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Уникальные SKU в <code>Весь каталог</code></td>
+<td style="text-align:right">821</td>
+</tr>
+<tr>
+<td>Минимальная цена на сайте</td>
+<td style="text-align:right">400 ₽</td>
+</tr>
+<tr>
+<td>Средняя цена по сайту</td>
+<td style="text-align:right">4 049 ₽</td>
+</tr>
+<tr>
+<td>Максимальная цена на сайте</td>
+<td style="text-align:right">20 300 ₽</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="срез-по-женскому-core-apparel">Срез по женскому core apparel</h3>
+<p>Чтобы не искажать сегмент аксессуарами, детскими товарами и gift-позициями, отдельно посчитан union основных женских разделов <code>Верх + Низ + Трикотаж + Платья + Костюмы + Верхняя одежда</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Показатель</th>
+<th style="text-align:right">Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Уникальные SKU в core apparel</td>
+<td style="text-align:right">412</td>
+</tr>
+<tr>
+<td>Минимальная цена</td>
+<td style="text-align:right">750 ₽</td>
+</tr>
+<tr>
+<td>Средняя цена</td>
+<td style="text-align:right">4 994 ₽</td>
+</tr>
+<tr>
+<td>Медиана</td>
+<td style="text-align:right">4 800 ₽</td>
+</tr>
+<tr>
+<td>Максимальная цена</td>
+<td style="text-align:right">20 300 ₽</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="таблица-1-распределение-цен-по-категориям-lapatanova">Таблица 1. Распределение цен по категориям Lapatanova</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Категория</th>
+<th style="text-align:right">min цена</th>
+<th style="text-align:right">avg цена</th>
+<th style="text-align:right">max цена</th>
+<th style="text-align:right">количество SKU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Весь каталог</td>
+<td style="text-align:right">400 ₽</td>
+<td style="text-align:right">4 049 ₽</td>
+<td style="text-align:right">20 300 ₽</td>
+<td style="text-align:right">821</td>
+</tr>
+<tr>
+<td>Платья</td>
+<td style="text-align:right">2 500 ₽</td>
+<td style="text-align:right">6 503 ₽</td>
+<td style="text-align:right">13 800 ₽</td>
+<td style="text-align:right">42</td>
+</tr>
+<tr>
+<td>Костюмы*</td>
+<td style="text-align:right">2 500 ₽</td>
+<td style="text-align:right">5 465 ₽</td>
+<td style="text-align:right">9 200 ₽</td>
+<td style="text-align:right">28</td>
+</tr>
+<tr>
+<td>Трикотаж</td>
+<td style="text-align:right">1 000 ₽</td>
+<td style="text-align:right">4 677 ₽</td>
+<td style="text-align:right">13 800 ₽</td>
+<td style="text-align:right">260</td>
+</tr>
+<tr>
+<td>Юбки</td>
+<td style="text-align:right">1 500 ₽</td>
+<td style="text-align:right">4 603 ₽</td>
+<td style="text-align:right">8 300 ₽</td>
+<td style="text-align:right">96</td>
+</tr>
+<tr>
+<td>Брюки</td>
+<td style="text-align:right">2 300 ₽</td>
+<td style="text-align:right">4 957 ₽</td>
+<td style="text-align:right">8 200 ₽</td>
+<td style="text-align:right">47</td>
+</tr>
+<tr>
+<td>Топы / блузы</td>
+<td style="text-align:right">750 ₽</td>
+<td style="text-align:right">3 343 ₽</td>
+<td style="text-align:right">6 500 ₽</td>
+<td style="text-align:right">55</td>
+</tr>
+<tr>
+<td>Футболки / лонгсливы</td>
+<td style="text-align:right">1 000 ₽</td>
+<td style="text-align:right">3 102 ₽</td>
+<td style="text-align:right">6 200 ₽</td>
+<td style="text-align:right">45</td>
+</tr>
+<tr>
+<td>Верхняя одежда</td>
+<td style="text-align:right">3 500 ₽</td>
+<td style="text-align:right">9 414 ₽</td>
+<td style="text-align:right">20 300 ₽</td>
+<td style="text-align:right">30</td>
+</tr>
+<tr>
+<td>Аксессуары</td>
+<td style="text-align:right">400 ₽</td>
+<td style="text-align:right">1 737 ₽</td>
+<td style="text-align:right">6 900 ₽</td>
+<td style="text-align:right">108</td>
+</tr>
+</tbody>
+</table></div>
+<p>* <code>Костюмы</code> посчитаны по отдельному разделу <code>/costumes</code>; внутри него есть не только цельные костюмы, но и комплектные образы и костюмные элементы.</p>
+<h3 id="что-видно-из-цифр">Что видно из цифр</h3>
+<ul>
+<li>Реальный сайтовый низкий вход в бренд есть, но он создается аксессуарами и sale-позициями.</li>
+<li>Женский core apparel у Lapatanova живет в диапазоне примерно <code>3 000 - 7 000 ₽</code>, при средней около <code>5 000 ₽</code>.</li>
+<li>Верхняя одежда формирует верхний чек (<code>9 414 ₽</code> в среднем, максимум <code>20 300 ₽</code>).</li>
+<li>Платья и костюмная группа стоят заметно выше, чем футболки/топы, но все еще остаются ниже typical middle/premium российских fashion-брендов.</li>
+</ul>
+<h2 id="к-какому-ценовому-сегменту-относится-lapatanova">К какому ценовому сегменту относится Lapatanova</h2>
+<h3 id="итоговый-сегмент-upper-mass">Итоговый сегмент: <code>upper mass</code></h3>
+<h3 id="почему-не-mass">Почему не <code>mass</code></h3>
+<ul>
+<li>Средняя цена женского core apparel почти <code>5 000 ₽</code>.</li>
+<li>Платья в среднем <code>6 503 ₽</code>.</li>
+<li>Костюмы в среднем <code>5 465 ₽</code>.</li>
+<li>Верхняя одежда в среднем <code>9 414 ₽</code>.</li>
+<li>Для mass-сегмента такой средний чек уже высоковат, особенно по платьям, костюмам и верхней одежде.</li>
+</ul>
+<h3 id="почему-пока-не-middle">Почему пока не <code>middle</code></h3>
+<ul>
+<li>Большая часть продуктовой матрицы все еще находится в коридоре <code>3 000 - 7 000 ₽</code>.</li>
+<li>Трикотаж в среднем <code>4 677 ₽</code>, юбки <code>4 603 ₽</code>, брюки <code>4 957 ₽</code>, tops/blouses <code>3 343 ₽</code>.</li>
+<li>На Wildberries у бренда топовые категории идут еще ниже по цене после скидок: около <code>1 165 - 2 521 ₽</code>.</li>
+<li>Для настоящего <code>middle</code> сегмента средние чеки по женской одежде и особенно по трикотажу обычно выше.</li>
+</ul>
+<h3 id="вывод">Вывод</h3>
+<p>Lapatanova лучше всего описывается как:</p>
+<ul>
+<li><code>upper mass</code> по ценовому уровню;</li>
+<li><code>upper mass+</code> на отдельных категориях вроде верхней одежды и части платьев;</li>
+<li>с сильным аксессуарным входом и более низким marketplace-чеком на markdown-товарах.</li>
+</ul>
+<h2 id="какие-бренды-надо-убрать-из-прямых-конкурентов">Какие бренды надо убрать из прямых конкурентов</h2>
+<h3 id="исключить-из-прямых">Исключить из прямых</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Бренд</th>
+<th>Почему исключается из прямых</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BRUSNIKA</td>
+<td>По текущим ценовым сигналам заметно дороже Lapatanova: платья около <code>10 900 - 37 500 ₽</code>, джемперы около <code>9 000 - 22 900 ₽</code></td>
+</tr>
+<tr>
+<td>CHARUEL</td>
+<td>Существенно выше по платьям и overall-fashion tier: платья около <code>23 990 - 39 990 ₽</code></td>
+</tr>
+<tr>
+<td>MIRSTORES</td>
+<td>Полезен как knitwear benchmark, но по позиционированию и чеку смещен выше Lapatanova</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="что-это-значит">Что это значит</h3>
+<p>Эти бренды можно использовать как <code>upper reference</code> или <code>aspirational benchmark</code>, но не как базовый прямой конкурентный пул.</p>
+<h2 id="исправленный-конкурентный-пул">Исправленный конкурентный пул</h2>
+<p>Ниже бренды разделены на 3 группы.</p>
+<h2 id="прямые-конкуренты">Прямые конкуренты</h2>
+<p>Это бренды, которые максимально близки Lapatanova по:</p>
+<ul>
+<li><code>upper mass</code> или близкому чеку;</li>
+<li>женской multi-category матрице;</li>
+<li>сочетанию базы и fashion-составляющей;</li>
+<li>D2C + marketplace модели или близкой к ней.</li>
+</ul>
+<h3 id="таблица-2-прямые-конкуренты">Таблица 2. Прямые конкуренты</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Бренд</th>
+<th>Страна</th>
+<th>Ценовой диапазон</th>
+<th>Ключевые категории товаров</th>
+<th>Каналы продаж</th>
+<th>Позиционирование</th>
+<th>Приблизительный масштаб</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TOTTI</td>
+<td>Россия</td>
+<td>около <code>3 490 - 27 980 ₽</code> по категориям <code>трикотаж / платья</code></td>
+<td>трикотаж, трикотажные костюмы, платья, жакеты и жилеты, брюки и юбки, рубашки и блузы, футболки и топы, верхняя одежда, аксессуары</td>
+<td>сайт, Wildberries, Ozon, Lamoda</td>
+<td>российский multi-category brand в upper-mass с сильным трикотажным и аксессуарным слоем</td>
+<td>средний бренд</td>
+</tr>
+<tr>
+<td>EMKA</td>
+<td>Россия</td>
+<td>около <code>2 390 - 34 990 ₽</code> по категориям <code>трикотаж / платья</code></td>
+<td>платья, жакеты, жилеты, брюки, шорты, рубашки, блузки, топы, вязаный трикотаж, комплекты, верхняя одежда</td>
+<td>сайт, Wildberries, Ozon, Lamoda</td>
+<td>женский fashion brand с акцентом на office/feminine wardrobe и комплекты</td>
+<td>средний бренд</td>
+</tr>
+<tr>
+<td>ELIS</td>
+<td>Россия</td>
+<td>ориентир <code>4 999 - 12 999 ₽</code> по доступным live-ценам и сниппетам</td>
+<td>блузы, брюки, платья, трикотаж, базовый женский гардероб</td>
+<td>сайт, Wildberries, Ozon, Lamoda</td>
+<td>взрослый женский upper-mass / middle-low brand, ближе к structured wardrobe и офисной женственности</td>
+<td>крупный российский бренд</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="почему-именно-они">Почему именно они</h3>
+<ul>
+<li><code>TOTTI</code> ближе всего по канальной модели и ширине матрицы.</li>
+<li><code>EMKA</code> ближе всего по категории <code>женский гардероб + костюмы + трикотаж + комплекты</code>.</li>
+<li><code>ELIS</code> ближе по взрослой женской аудитории и по ценовому полю, хотя визуально более офисный и менее playful.</li>
+</ul>
+<h2 id="косвенные-конкуренты">Косвенные конкуренты</h2>
+<p>Это бренды, которые цепляют похожую аудиторию, но отличаются либо стилем, либо масштабом, либо находятся чуть выше по цене.</p>
+<h3 id="таблица-3-косвенные-конкуренты">Таблица 3. Косвенные конкуренты</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Бренд</th>
+<th>Страна</th>
+<th>Ценовой диапазон</th>
+<th>Ключевые категории товаров</th>
+<th>Каналы продаж</th>
+<th>Позиционирование</th>
+<th>Приблизительный масштаб</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BRUSNIKA</td>
+<td>Россия</td>
+<td>около <code>9 000 - 37 500 ₽</code> по доступным ценовым сигналам</td>
+<td>платья, джемперы, деним, outerwear, knitted sets, office</td>
+<td>сайт, Lamoda, Wildberries</td>
+<td>более дорогой женский бренд с собственным производством и сильным knitwear/wardrobe-DNA</td>
+<td>средний бренд, price tier выше Lapatanova</td>
+</tr>
+<tr>
+<td>BAON</td>
+<td>Россия</td>
+<td>около <code>1 299 - 14 299 ₽</code> по категориям <code>трикотаж / платья</code></td>
+<td>трикотаж, платья, джинсы, куртки, жакеты, женская/мужская/детская одежда</td>
+<td>сайт, Wildberries, Ozon, Lamoda</td>
+<td>более basic-casual и более массовый бренд, конкурирует за часть того же upper-mass спроса</td>
+<td>крупный федеральный бренд</td>
+</tr>
+<tr>
+<td>SAVAGE</td>
+<td>Россия</td>
+<td>около <code>1 399 - 9 999 ₽</code> по доступным live-ценам</td>
+<td>женская одежда, верхняя одежда, базовый casual</td>
+<td>сайт, Wildberries, Ozon, Lamoda</td>
+<td>более mass/basic, ближе к повседневному casual и outerwear, чем к эмоциональному трикотажу</td>
+<td>средний/крупный бренд</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="почему-они-не-прямые">Почему они не прямые</h3>
+<ul>
+<li><code>BRUSNIKA</code> слишком часто уходит выше по чеку.</li>
+<li><code>BAON</code> и <code>SAVAGE</code> шире и более basic/mass по стилистике.</li>
+<li>Они важны для понимания поля спроса, но не совпадают с Lapatanova по ДНК один в один.</li>
+</ul>
+<h2 id="маркетплейс-конкуренты">Маркетплейс-конкуренты</h2>
+<p>Это бренды, которые особенно релевантны в marketplace-среде и находятся в сопоставимом или близком ценовом коридоре.</p>
+<h3 id="таблица-4-маркетплейс-конкуренты">Таблица 4. Маркетплейс-конкуренты</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Бренд</th>
+<th>Страна</th>
+<th>Ценовой диапазон</th>
+<th>Ключевые категории товаров</th>
+<th>Каналы продаж</th>
+<th>Позиционирование</th>
+<th>Приблизительный масштаб</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vittoria Vicci</td>
+<td>страна явно не указана на проверенных страницах; работает как российский fashion e-com</td>
+<td><code>джемперы от 1 690 ₽</code>, <code>платья от 6 990 ₽</code></td>
+<td>платья, жакеты, блузки, рубашки, джемперы, fashion-ассортимент</td>
+<td>сайт, Wildberries, Ozon, Lamoda</td>
+<td>marketplace-friendly feminine/fashion brand</td>
+<td>средний бренд</td>
+</tr>
+<tr>
+<td>BAON</td>
+<td>Россия</td>
+<td>около <code>1 299 - 14 299 ₽</code></td>
+<td>трикотаж, платья, outerwear, jeans, basic wardrobe</td>
+<td>сайт, Wildberries, Ozon, Lamoda</td>
+<td>крупный омниканальный basic/casual бренд</td>
+<td>крупный бренд</td>
+</tr>
+<tr>
+<td>ELIS</td>
+<td>Россия</td>
+<td>ориентир <code>4 999 - 12 999 ₽</code></td>
+<td>блузы, платья, брюки, трикотаж</td>
+<td>сайт, Wildberries, Ozon, Lamoda</td>
+<td>взрослый женский wardrobe brand, хорошо читается на MP за счет понятных категорий</td>
+<td>крупный бренд</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="почему-эти-бренды-важны-для-mp-сравнения">Почему эти бренды важны для MP-сравнения</h3>
+<ul>
+<li>У них подтверждено наличие на <code>Wildberries</code>, <code>Ozon</code> и/или <code>Lamoda</code>.</li>
+<li>Их цена не выбивается из поля, в котором Lapatanova реально может конкурировать за спрос.</li>
+<li>Их ассортимент понятен маркетплейсам: платья, трикотаж, блузы, брюки, basic tops.</li>
+</ul>
+<h2 id="матрица-позиционирования-брендов">Матрица позиционирования брендов</h2>
+<p>Ось X: цена<br/>
+Ось Y: стиль (<code>basic → fashion / designer</code>)</p>
+<h3 id="таблица-5-позиционная-матрица">Таблица 5. Позиционная матрица</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Стиль \ Цена</th>
+<th>Нижний upper mass / mass</th>
+<th>Upper mass</th>
+<th>Выше upper mass / middle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic</td>
+<td>SAVAGE</td>
+<td>BAON, ELIS</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Basic → fashion</td>
+<td>—</td>
+<td>Lapatanova, EMKA, TOTTI</td>
+<td>BRUSNIKA</td>
+</tr>
+<tr>
+<td>Fashion / designer</td>
+<td>Vittoria Vicci</td>
+<td>—</td>
+<td>CHARUEL</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="где-на-матрице-стоит-lapatanova">Где на матрице стоит Lapatanova</h3>
+<ul>
+<li>По цене: в центре <code>upper mass</code>.</li>
+<li>По стилю: выше pure basic, но ниже designer/premium-fashion.</li>
+<li>По форме подачи: <code>basic → fashion</code>, потому что у бренда сильная everyday-база, но очень заметный эмоциональный и принтовый слой.</li>
+</ul>
+<h2 id="к-какой-модели-ближе-lapatanova">К какой модели ближе Lapatanova</h2>
+<h3 id="итог-slow-fashion-brand">Итог: <code>slow fashion brand</code></h3>
+<h3 id="почему-не-designer-brand">Почему не <code>designer brand</code></h3>
+<ul>
+<li>Цена слишком низкая для designer-позиции.</li>
+<li>Ассортимент слишком широкий и прикладной.</li>
+<li>Доля everyday-базы очень заметна.</li>
+</ul>
+<h3 id="почему-не-premium-basic-brand">Почему не <code>premium basic brand</code></h3>
+<ul>
+<li>У бренда слишком сильны яркие принты, цветовые серии и эмоциональная идентичность.</li>
+<li>Это не только “тихая база”, а бренд с узнаваемыми геро-продуктами.</li>
+</ul>
+<h3 id="почему-не-marketplace-fashion-brand">Почему не <code>marketplace fashion brand</code></h3>
+<ul>
+<li>У бренда есть сильная собственная платформа:
+<ul>
+<li>свой сайт;</li>
+<li>два шоурума;</li>
+<li>собственное производство;</li>
+<li>длинная история бренда и production-storytelling.</li>
+</ul>
+</li>
+<li>Маркетплейсы важны, но они не выглядят единственным стержнем бизнеса.</li>
+</ul>
+<h3 id="почему-именно-slow-fashion-brand">Почему именно <code>slow fashion brand</code></h3>
+<ul>
+<li>На сайте прямо заявлены:
+<ul>
+<li>трикотажное производство полного цикла;</li>
+<li>свой швейный цех;</li>
+<li>акцент на натуральные ткани и пряжу;</li>
+<li>вещи “на все случаи жизни” и “на все сезоны”.</li>
+</ul>
+</li>
+<li>Бренд продвигает не только тренд, но и долговременное ношение, комбинаторику, качество и материал.</li>
+<li>На операционном уровне точнее всего описывать Lapatanova как:
+<ul>
+<li><code>slow fashion brand</code></li>
+<li>в ценовом сегменте <code>upper mass</code></li>
+<li>с активным <code>marketplace distribution layer</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="исправленный-список-ключевых-конкурентов-для-стратегии">Исправленный список ключевых конкурентов для стратегии</h2>
+<h3 id="ядро-для-следующего-стратегического-анализа">Ядро для следующего стратегического анализа</h3>
+<ol>
+<li>
+<p><code>TOTTI</code><br/>
+Причина: самая близкая омниканальная модель, похожая ширина женской матрицы, сильный трикотаж и аксессуары.</p>
+</li>
+<li>
+<p><code>EMKA</code><br/>
+Причина: очень близкая структура категорий и сопоставимый ценовой уровень в женском wardrobe-сегменте.</p>
+</li>
+<li>
+<p><code>ELIS</code><br/>
+Причина: взрослая женская аудитория, близкий чек, понятная категорийная архитектура и сильное присутствие на маркетплейсах.</p>
+</li>
+<li>
+<p><code>Vittoria Vicci</code><br/>
+Причина: сильный marketplace-конкурент в похожем price field, полезен для отслеживания карточек, промо и marketplace-ассортимента.</p>
+</li>
+<li>
+<p><code>BAON</code><br/>
+Причина: не идеален по стилю, но очень важен как upper-mass/basic benchmark в широком омниканальном поле.</p>
+</li>
+</ol>
+<h3 id="кого-держать-как-upper-reference-но-не-как-core-direct-competitors">Кого держать как upper reference, но не как core direct competitors</h3>
+<ul>
+<li><code>BRUSNIKA</code></li>
+<li><code>MIRSTORES</code></li>
+<li><code>CHARUEL</code></li>
+</ul>
+<p>Их полезно использовать для визуальных и продуктовых ориентиров, но не для базового price-to-price сравнения с Lapatanova.</p>
+<h2 id="ключевой-вывод">Ключевой вывод</h2>
+<p>Главная поправка по сравнению с первым отчётом:</p>
+<ul>
+<li>Lapatanova — это <strong>не premium и не уверенный middle</strong>.</li>
+<li>Это <strong>upper mass женский бренд</strong> с сильным трикотажным ядром, своей производственной историей и активным присутствием на маркетплейсах.</li>
+<li>Соответственно, базовый конкурентный пул должен строиться вокруг <code>TOTTI</code>, <code>EMKA</code>, <code>ELIS</code>, <code>Vittoria Vicci</code>, <code>BAON</code>, а не вокруг более дорогих брендов.</li>
+</ul>
+<h2 id="источники">Источники</h2>
+<h3 id="lapatanova">Lapatanova</h3>
+<ul>
+<li><a href="https://lapatanova.com/all-catalog" rel="noopener noreferrer" target="_blank">Lapatanova: Весь каталог</a></li>
+<li><a href="https://lapatanova.com/tricot" rel="noopener noreferrer" target="_blank">Lapatanova: Трикотаж</a></li>
+<li><a href="https://lapatanova.com/dresses" rel="noopener noreferrer" target="_blank">Lapatanova: Платья</a></li>
+<li><a href="https://lapatanova.com/costumes" rel="noopener noreferrer" target="_blank">Lapatanova: Костюмы</a></li>
+<li><a href="https://lapatanova.com/outerwear" rel="noopener noreferrer" target="_blank">Lapatanova: Верхняя одежда</a></li>
+<li><a href="https://lapatanova.com/accessories" rel="noopener noreferrer" target="_blank">Lapatanova: Аксессуары</a></li>
+</ul>
+<h3 id="конкуренты-и-каналы">Конкуренты и каналы</h3>
+<ul>
+<li><a href="https://totti-shop.ru/" rel="noopener noreferrer" target="_blank">TOTTI</a></li>
+<li><a href="https://www.lamoda.ru/b/29877/brand-totti-/" rel="noopener noreferrer" target="_blank">TOTTI на Lamoda</a></li>
+<li><a href="https://www.ozon.ru/category/odezhda-obuv-i-aksessuary-7500/totti-84148463/" rel="noopener noreferrer" target="_blank">TOTTI на Ozon</a></li>
+<li><a href="https://www.wildberries.ru/brands/totti" rel="noopener noreferrer" target="_blank">TOTTI на Wildberries</a></li>
+<li><a href="https://emkashop.ru/" rel="noopener noreferrer" target="_blank">EMKA</a></li>
+<li><a href="https://www.lamoda.ru/b/25604/brand-emka/" rel="noopener noreferrer" target="_blank">EMKA на Lamoda</a></li>
+<li><a href="https://www.ozon.ru/brand/emka-75765406/" rel="noopener noreferrer" target="_blank">EMKA на Ozon</a></li>
+<li><a href="https://www.wildberries.ru/brands/emka" rel="noopener noreferrer" target="_blank">EMKA на Wildberries</a></li>
+<li><a href="https://elis.ru/" rel="noopener noreferrer" target="_blank">ELIS</a></li>
+<li><a href="https://www.lamoda.ru/b/30849/brand-elis/" rel="noopener noreferrer" target="_blank">ELIS на Lamoda</a></li>
+<li><a href="https://www.ozon.ru/brand/elis-87322744/" rel="noopener noreferrer" target="_blank">ELIS на Ozon</a></li>
+<li><a href="https://www.wildberries.ru/brands/elis-24907/all" rel="noopener noreferrer" target="_blank">ELIS на Wildberries</a></li>
+<li><a href="https://vicci.ru/" rel="noopener noreferrer" target="_blank">Vittoria Vicci</a></li>
+<li><a href="https://www.lamoda.ru/b/25196/brand-vittoriavicci/" rel="noopener noreferrer" target="_blank">Vittoria Vicci на Lamoda</a></li>
+<li><a href="https://www.ozon.ru/brand/vittoria-vicci-87295426/" rel="noopener noreferrer" target="_blank">Vittoria Vicci на Ozon</a></li>
+<li><a href="https://www.wildberries.ru/brands/vittoria-vicci" rel="noopener noreferrer" target="_blank">Vittoria Vicci на Wildberries</a></li>
+<li><a href="https://baon.ru/" rel="noopener noreferrer" target="_blank">BAON</a></li>
+<li><a href="https://www.lamoda.ru/b/5696/brand-baon/" rel="noopener noreferrer" target="_blank">BAON на Lamoda</a></li>
+<li><a href="https://www.ozon.ru/brand/baon-19512656/" rel="noopener noreferrer" target="_blank">BAON на Ozon</a></li>
+<li><a href="https://www.wildberries.ru/brands/baon" rel="noopener noreferrer" target="_blank">BAON на Wildberries</a></li>
+<li><a href="https://brusnikabrand.com/" rel="noopener noreferrer" target="_blank">BRUSNIKA</a></li>
+<li><a href="https://www.lamoda.ru/b/25235/brand-brusnika/" rel="noopener noreferrer" target="_blank">BRUSNIKA на Lamoda</a></li>
+<li><a href="https://savage.ru/" rel="noopener noreferrer" target="_blank">SAVAGE</a></li>
+<li><a href="https://www.lamoda.ru/b/5588/brand-savage/" rel="noopener noreferrer" target="_blank">SAVAGE на Lamoda</a></li>
+<li><a href="https://www.ozon.ru/brand/savage-31821225/" rel="noopener noreferrer" target="_blank">SAVAGE на Ozon</a></li>
+<li><a href="https://www.charuel.ru/" rel="noopener noreferrer" target="_blank">CHARUEL</a></li>
+<li><a href="https://www.lamoda.ru/b/6631/brand-charuel-/" rel="noopener noreferrer" target="_blank">CHARUEL на Lamoda</a></li>
+</ul>
+
+                </article>
+                <aside class="aside">
+                  <div class="aside-card">
+                    <h4>Report</h4>
+                    <p>Competitor Revision</p>
+                    <div class="cta-row">
+                      <a class="button secondary" href="./lapatanova_public_bundle.zip">Download files</a>
+                    </div>
+                  </div>
+                  <div class="aside-card">
+                    <h4>Contents</h4>
+                    <div class="toc-links"><a class="toc-link" href="#что-было-скорректировано">Что было скорректировано</a><a class="toc-link" href="#методика-расчета-цен-lapatanova">Методика расчета цен Lapatanova</a><a class="toc-link" href="#ценовой-диапазон-lapatanova">Ценовой диапазон Lapatanova</a><a class="toc-link" href="#общий-срез">Общий срез</a><a class="toc-link" href="#срез-по-женскому-core-apparel">Срез по женскому core apparel</a><a class="toc-link" href="#таблица-1-распределение-цен-по-категориям-lapatanova">Таблица 1. Распределение цен по категориям Lapatanova</a><a class="toc-link" href="#что-видно-из-цифр">Что видно из цифр</a><a class="toc-link" href="#к-какому-ценовому-сегменту-относится-lapatanova">К какому ценовому сегменту относится Lapatanova</a><a class="toc-link" href="#итоговый-сегмент-upper-mass">Итоговый сегмент: upper mass</a><a class="toc-link" href="#почему-не-mass">Почему не mass</a><a class="toc-link" href="#почему-пока-не-middle">Почему пока не middle</a><a class="toc-link" href="#вывод">Вывод</a><a class="toc-link" href="#какие-бренды-надо-убрать-из-прямых-конкурентов">Какие бренды надо убрать из прямых конкурентов</a><a class="toc-link" href="#исключить-из-прямых">Исключить из прямых</a><a class="toc-link" href="#что-это-значит">Что это значит</a><a class="toc-link" href="#исправленный-конкурентный-пул">Исправленный конкурентный пул</a><a class="toc-link" href="#прямые-конкуренты">Прямые конкуренты</a><a class="toc-link" href="#таблица-2-прямые-конкуренты">Таблица 2. Прямые конкуренты</a><a class="toc-link" href="#почему-именно-они">Почему именно они</a><a class="toc-link" href="#косвенные-конкуренты">Косвенные конкуренты</a><a class="toc-link" href="#таблица-3-косвенные-конкуренты">Таблица 3. Косвенные конкуренты</a><a class="toc-link" href="#почему-они-не-прямые">Почему они не прямые</a><a class="toc-link" href="#маркетплейс-конкуренты">Маркетплейс-конкуренты</a><a class="toc-link" href="#таблица-4-маркетплейс-конкуренты">Таблица 4. Маркетплейс-конкуренты</a><a class="toc-link" href="#почему-эти-бренды-важны-для-mp-сравнения">Почему эти бренды важны для MP-сравнения</a><a class="toc-link" href="#матрица-позиционирования-брендов">Матрица позиционирования брендов</a><a class="toc-link" href="#таблица-5-позиционная-матрица">Таблица 5. Позиционная матрица</a><a class="toc-link" href="#где-на-матрице-стоит-lapatanova">Где на матрице стоит Lapatanova</a><a class="toc-link" href="#к-какой-модели-ближе-lapatanova">К какой модели ближе Lapatanova</a><a class="toc-link" href="#итог-slow-fashion-brand">Итог: slow fashion brand</a><a class="toc-link" href="#почему-не-designer-brand">Почему не designer brand</a><a class="toc-link" href="#почему-не-premium-basic-brand">Почему не premium basic brand</a><a class="toc-link" href="#почему-не-marketplace-fashion-brand">Почему не marketplace fashion brand</a><a class="toc-link" href="#почему-именно-slow-fashion-brand">Почему именно slow fashion brand</a><a class="toc-link" href="#исправленный-список-ключевых-конкурентов-для-стратегии">Исправленный список ключевых конкурентов для стратегии</a><a class="toc-link" href="#ядро-для-следующего-стратегического-анализа">Ядро для следующего стратегического анализа</a><a class="toc-link" href="#кого-держать-как-upper-reference-но-не-как-core-direct-competitors">Кого держать как upper reference, но не как core direct competitors</a><a class="toc-link" href="#ключевой-вывод">Ключевой вывод</a><a class="toc-link" href="#источники">Источники</a><a class="toc-link" href="#lapatanova">Lapatanova</a><a class="toc-link" href="#конкуренты-и-каналы">Конкуренты и каналы</a></div>
+                  </div>
+                </aside>
+              </div>
+            </section>
+            
+            <section class="section" id="business-direction">
+              <div class="two-col">
+                <article class="article">
+                  <div class="eyebrow">Internal analytics</div>
+                  <h1>Lapatanova: куда развивать бизнес дальше</h1>
+<p>Источник расчётов: <a href="./lapatanova_public_bundle.zip">summary.json</a>, <a href="./lapatanova_public_bundle.zip">style_master.csv</a>, <a href="./lapatanova_public_bundle.zip">sku_master_variant.csv</a>, <a href="./lapatanova_public_bundle.zip">category_summary.csv</a>, <a href="./lapatanova_public_bundle.zip">sales_fact.csv</a>.</p>
+<p>Текущий слой построен на реализованных продажах <code>demand + retaildemand</code>. Это даёт рабочую базу для стратегии ассортимента, даже без полного <code>order_fact</code>.</p>
+<h2 id="что-уже-видно-по-бизнесу">Что уже видно по бизнесу</h2>
+<ul>
+<li>За последние <code>12M</code> в текущем слое зафиксировано <code>19.77 млн ₽</code> реализованной выручки и <code>5 173</code> проданных единицы по <code>21 049</code> строкам продаж.</li>
+<li>Внутренняя номенклатура сейчас шире, чем внешний сайт: <code>1 470</code> style-level товаров и <code>2 551</code> variants против <code>821</code> SKU на сайте. Значит, впереди обязательно нужен слой <code>site SKU ↔ product/style</code>.</li>
+<li><code>84.43%</code> выручки последних 12 месяцев дают 6 категорий: <code>knitwear</code>, <code>skirts</code>, <code>outerwear</code>, <code>tops_blouses</code>, <code>accessories</code>, <code>pants</code>.</li>
+<li>На складе в текущем слое <code>3 926</code> единиц. Абсолютный навес остатков сильнее всего виден в <code>accessories</code>, <code>skirts</code>, <code>knitwear</code>, <code>tops_blouses</code>, <code>pants</code>, <code>dresses</code>.</li>
+</ul>
+<h2 id="категории-и-их-роль">Категории и их роль</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Категория</th>
+<th style="text-align:right">Роль</th>
+<th style="text-align:right">Выручка 12M</th>
+<th style="text-align:right">Доля 12M</th>
+<th style="text-align:right">Рост vs prev12M</th>
+<th style="text-align:right">Styles</th>
+<th>Комментарий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>knitwear</td>
+<td style="text-align:right">core</td>
+<td style="text-align:right">5.49 млн ₽</td>
+<td style="text-align:right">27.76%</td>
+<td style="text-align:right">+26.55%</td>
+<td style="text-align:right">338</td>
+<td>Главное ядро бренда. Нужен фокус на победителях и на repeat-моделях.</td>
+</tr>
+<tr>
+<td>skirts</td>
+<td style="text-align:right">core</td>
+<td style="text-align:right">2.47 млн ₽</td>
+<td style="text-align:right">12.48%</td>
+<td style="text-align:right">+63.41%</td>
+<td style="text-align:right">176</td>
+<td>Сильный рост, категория уже тянет на постоянный блок, а не на допродажу.</td>
+</tr>
+<tr>
+<td>outerwear</td>
+<td style="text-align:right">core</td>
+<td style="text-align:right">2.35 млн ₽</td>
+<td style="text-align:right">11.88%</td>
+<td style="text-align:right">+59.53%</td>
+<td style="text-align:right">50</td>
+<td>Узкая, но очень эффективная категория; высокий чек и сильная продуктивность на style.</td>
+</tr>
+<tr>
+<td>tops_blouses</td>
+<td style="text-align:right">core</td>
+<td style="text-align:right">2.29 млн ₽</td>
+<td style="text-align:right">11.59%</td>
+<td style="text-align:right">+21.81%</td>
+<td style="text-align:right">147</td>
+<td>Хорошая база для входа в бренд и для комплектности.</td>
+</tr>
+<tr>
+<td>accessories</td>
+<td style="text-align:right">core</td>
+<td style="text-align:right">2.05 млн ₽</td>
+<td style="text-align:right">10.37%</td>
+<td style="text-align:right">-23.02%</td>
+<td style="text-align:right">456</td>
+<td>Категория слишком широкая относительно вклада в выручку; сильный кандидат на рационализацию.</td>
+</tr>
+<tr>
+<td>pants</td>
+<td style="text-align:right">core</td>
+<td style="text-align:right">2.04 млн ₽</td>
+<td style="text-align:right">10.34%</td>
+<td style="text-align:right">+31.15%</td>
+<td style="text-align:right">101</td>
+<td>Стоит усиливать как часть костюмно-комплектной логики вокруг трикотажа и верха.</td>
+</tr>
+<tr>
+<td>dresses</td>
+<td style="text-align:right">growth</td>
+<td style="text-align:right">1.22 млн ₽</td>
+<td style="text-align:right">6.18%</td>
+<td style="text-align:right">+185.51%</td>
+<td style="text-align:right">84</td>
+<td>Категория растёт с низкой базы; нужен не широкий рост, а ставка на лучшие силуэты.</td>
+</tr>
+<tr>
+<td>tshirts_longsleeves</td>
+<td style="text-align:right">growth</td>
+<td style="text-align:right">1.14 млн ₽</td>
+<td style="text-align:right">5.78%</td>
+<td style="text-align:right">+20.10%</td>
+<td style="text-align:right">87</td>
+<td>Хороший entry layer и дополнение к корзине, не основа бренда.</td>
+</tr>
+<tr>
+<td>jackets_blazers</td>
+<td style="text-align:right">growth</td>
+<td style="text-align:right">0.51 млн ₽</td>
+<td style="text-align:right">2.57%</td>
+<td style="text-align:right">+124.82%</td>
+<td style="text-align:right">16</td>
+<td>Маленькая, но перспективная капсула.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="самые-важные-сигналы-для-стратегии">Самые важные сигналы для стратегии</h2>
+<h3 id="1-knitwear-это-не-просто-категория-а-главный-мотор-бренда">1. Knitwear это не просто категория, а главный мотор бренда</h3>
+<ul>
+<li><code>knitwear</code> даёт <code>27.76%</code> выручки 12M.</li>
+<li>Внутри него есть и hero-модели, и print/image-победители: <code>Авангард</code>, <code>Бантики</code>, <code>Лютики</code>, <code>Бадминтон</code>, <code>Сердечки</code>, <code>Зебра</code>.</li>
+<li>Это аргумент в пользу стратегии <code>repeatable knit core + ограниченные image-принты</code>, а не хаотичного расширения по всем направлениям.</li>
+</ul>
+<h3 id="2-bottoms-уже-нельзя-считать-второстепенным-блоком">2. Bottoms уже нельзя считать второстепенным блоком</h3>
+<ul>
+<li><code>skirts + pants</code> вместе дают <code>4.51 млн ₽</code>, то есть <code>22.82%</code> выручки 12M.</li>
+<li>Рост обеих категорий положительный: <code>skirts +63.41%</code>, <code>pants +31.15%</code>.</li>
+<li>Это сильный сигнал в пользу развития не только верхов и трикотажа, но и <code>координированных комплектов</code>: юбка/брюки + трикотаж/топ/жакет.</li>
+</ul>
+<h3 id="3-outerwear-выглядит-как-высокоэффективный-halo-image-driver">3. Outerwear выглядит как высокоэффективный halo / image-driver</h3>
+<ul>
+<li>Только <code>50</code> styles, но <code>11.88%</code> выручки 12M.</li>
+<li>Выручка на один style заметно выше, чем в большинстве других категорий.</li>
+<li>При этом всего <code>8%</code> styles в категории без продаж за 12M, то есть матрица там намного чище, чем в аксессуарах или платьях.</li>
+<li>Вывод: outerwear стоит держать как узкий, сильный, визуально важный блок с высоким чеком, а не раздувать в ширину.</li>
+</ul>
+<h3 id="4-accessories-перегружены-и-требуют-жёсткой-чистки">4. Accessories перегружены и требуют жёсткой чистки</h3>
+<ul>
+<li><code>456</code> styles в категории, но только <code>10.37%</code> выручки 12M.</li>
+<li>Рост за период отрицательный: <code>-23.02%</code>.</li>
+<li>Средняя цена категории около <code>1 842 ₽</code>, это самый низкий блок.</li>
+<li><code>168</code> style-level позиций в категории не имели выручки за последние 12 месяцев.</li>
+<li>Абсолютный навес непроданного stock здесь самый высокий: <code>277</code> единиц.</li>
+<li>Взвешенная скидочная зависимость по lifetime тоже самая высокая: около <code>12.95%</code>.</li>
+</ul>
+<p>Практический вывод: аксессуары нужны как traffic layer, но не как зона для бесконтрольной ширины. Здесь лучше идти в <code>короткий hero-range цветов и форм</code>, а длинный хвост чистить.</p>
+<h3 id="5-dresses-растут-но-не-как-широкая-база">5. Dresses растут, но не как широкая база</h3>
+<ul>
+<li><code>dresses</code> выросли на <code>+185.51%</code>, но пока это <code>6.18%</code> выручки.</li>
+<li>При этом <code>39.29%</code> styles категории не дали продаж за последние 12 месяцев.</li>
+<li>Непроданный stock у платьев относительно объёма высокий: <code>40.62%</code> от stock пришёлся на варианты без 12M выручки.</li>
+</ul>
+<p>Вывод: платья стоит развивать селективно. Не расширять всё подряд, а закреплять 3-5 лучших конструкций и на них строить сезонные повторы.</p>
+<h2 id="ценовая-архитектура">Ценовая архитектура</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Ценовой диапазон</th>
+<th style="text-align:right">Styles</th>
+<th style="text-align:right">Выручка 12M</th>
+<th style="text-align:right">Доля выручки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;1500</code></td>
+<td style="text-align:right">313</td>
+<td style="text-align:right">1.13 млн ₽</td>
+<td style="text-align:right">5.69%</td>
+</tr>
+<tr>
+<td><code>1500-2499</code></td>
+<td style="text-align:right">184</td>
+<td style="text-align:right">1.38 млн ₽</td>
+<td style="text-align:right">6.99%</td>
+</tr>
+<tr>
+<td><code>2500-3999</code></td>
+<td style="text-align:right">304</td>
+<td style="text-align:right">3.17 млн ₽</td>
+<td style="text-align:right">16.04%</td>
+</tr>
+<tr>
+<td><code>4000-5999</code></td>
+<td style="text-align:right">282</td>
+<td style="text-align:right">3.60 млн ₽</td>
+<td style="text-align:right">18.23%</td>
+</tr>
+<tr>
+<td><code>6000-8999</code></td>
+<td style="text-align:right">342</td>
+<td style="text-align:right">7.65 млн ₽</td>
+<td style="text-align:right">38.71%</td>
+</tr>
+<tr>
+<td><code>9000+</code></td>
+<td style="text-align:right">45</td>
+<td style="text-align:right">2.83 млн ₽</td>
+<td style="text-align:right">14.34%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Главный факт: центр монетизации бренда сейчас не в entry-price, а в диапазоне <code>6000-8999 ₽</code>. Именно там стоит основной объём выручки.</p>
+<p>Отсюда рабочая архитектура развития:</p>
+<ul>
+<li><code>Entry / traffic</code>: <code>&lt;2500 ₽</code> через аксессуары, футболки, майки, отдельные базовые позиции.</li>
+<li><code>Core commercial</code>: <code>2500-5999 ₽</code> через юбки, брюки, tops, everyday knit.</li>
+<li><code>Main value zone</code>: <code>6000-8999 ₽</code> через трикотаж, платья, ключевые statement-модели.</li>
+<li><code>Halo / image</code>: <code>9000+ ₽</code> через outerwear и отдельные заметные капсулы.</li>
+</ul>
+<h2 id="что-развивать-дальше">Что развивать дальше</h2>
+<h3 id="приоритет-1-укреплять-core-вокруг-knitwear-bottoms">Приоритет 1. Укреплять core вокруг knitwear + bottoms</h3>
+<ul>
+<li>Развивать комплекты <code>джемпер/кардиган/жилет + юбка/брюки</code>.</li>
+<li>На уровне матрицы ставить KPI не только по категории, но и по <code>комплектности</code>: сколько styles работают в паре.</li>
+<li>Расширять сильные модели через повторы цвета, состава и длины, а не через постоянный запуск новых конструкций.</li>
+</ul>
+<h3 id="приоритет-2-сделать-аксессуары-управляемым-traffic-блоком-а-не-складским-хвостом">Приоритет 2. Сделать аксессуары управляемым traffic-блоком, а не складским хвостом</h3>
+<ul>
+<li>Оставить короткий список hero-форм: взрослые шапки, снуды, базовые шарфы, несколько наиболее продающих цветов.</li>
+<li>Урезать длинный tail цветов и редких моделей.</li>
+<li>Пересобрать аксессуары вокруг cross-sell с трикотажем и outerwear, а не как самостоятельную широкую матрицу.</li>
+</ul>
+<h3 id="приоритет-3-держать-outerwear-как-узкий-но-сильный-high-ticket-блок">Приоритет 3. Держать outerwear как узкий, но сильный high-ticket блок</h3>
+<ul>
+<li>Категория уже показывает высокую эффективность на style.</li>
+<li>Здесь не нужен большой ассортимент; нужен чёткий набор визуально сильных моделей.</li>
+<li>Outerwear может работать как <code>image-builder</code> и как способ удерживать бренд выше среднего чека.</li>
+</ul>
+<h3 id="приоритет-4-развивать-dresses-через-winner-based-strategy">Приоритет 4. Развивать dresses через winner-based strategy</h3>
+<ul>
+<li>Не наращивать ширину автоматически.</li>
+<li>Сначала выделить 5-10 конструкций с лучшей конверсией в продажи и повторять их в новых тканях/цветах/длинах.</li>
+<li>Чистить слабые dress-SKU быстрее, чем в core-трикотаже.</li>
+</ul>
+<h3 id="приоритет-5-формализовать-print-strategy">Приоритет 5. Формализовать print strategy</h3>
+<ul>
+<li>В data уже видны сильные print/image-модели: <code>Зебра</code>, <code>Авангард</code>, <code>Бантики</code>, <code>Сердечки</code>, <code>Этника</code>, <code>Геометрия</code>, <code>Листочки</code>.</li>
+<li>Это подтверждает, что бренду подходит не только <code>basic</code>, но и <code>limited expressive knit</code>.</li>
+<li>Рациональная модель: <code>70-80% core / repeat</code>, <code>20-30% image / prints / capsules</code>.</li>
+</ul>
+<h2 id="что-чистить-в-первую-очередь">Что чистить в первую очередь</h2>
+<ol>
+<li><code>Accessories</code>: самая перегруженная категория по ширине, stock и скидочной зависимости.</li>
+<li><code>Dresses</code>: высокая доля styles без 12M продаж и высокий непроданный stock.</li>
+<li><code>Skirts</code> и <code>pants</code>: категории сильные по выручке, но в них уже есть заметный хвост непродаваемых вариантов, значит нужна чистка по size/color tail.</li>
+<li>Низкооборотные variants внутри knitwear: категорию расширять можно, но только после чистки слабых цветовых и принтовых хвостов.</li>
+</ol>
+<h2 id="что-пока-нельзя-утверждать-жёстко">Что пока нельзя утверждать жёстко</h2>
+<ul>
+<li>Какие SKU являются именно <code>traffic-driving marketplace</code>, а какие <code>margin-driving D2C</code>. Для этого нужен реальный маппинг каналов.</li>
+<li>Какие именно <code>821</code> site SKU являются live-витриной относительно <code>1 470</code> internal styles.</li>
+<li>Как выглядит полноценно год-к-году динамика по старым периодам до догрузки Google Sheets.</li>
+</ul>
+<h2 id="следующий-шаг-который-даст-максимум-пользы">Следующий шаг, который даст максимум пользы</h2>
+<ol>
+<li>Связать <code>site SKU ↔ product/style ↔ variant</code>.</li>
+<li>Смэппить каналы продаж в документах.</li>
+<li>После этого пересобрать 4 прикладные матрицы:</li>
+</ol>
+<ul>
+<li><code>core matrix</code>: то, что должно быть всегда в продаже.</li>
+<li><code>growth matrix</code>: то, что стоит расширять.</li>
+<li><code>support matrix</code>: то, что поддерживает образ и корзину.</li>
+<li><code>exit / cleanup matrix</code>: то, что нужно выводить или резко сокращать.</li>
+</ul>
+<p>На текущем этапе уже можно делать управленческий вывод: бренд логичнее развивать через <code>knitwear-led assortment</code>, усиливая <code>bottoms</code> и сохраняя <code>outerwear</code> как high-ticket halo, одновременно сокращая перегруженность <code>accessories</code> и аккуратно выращивая <code>dresses</code> как winner-based growth category.</p>
+
+                </article>
+                <aside class="aside">
+                  <div class="aside-card">
+                    <h4>Report</h4>
+                    <p>Business Direction</p>
+                    <div class="cta-row">
+                      <a class="button secondary" href="./lapatanova_public_bundle.zip">Download files</a>
+                    </div>
+                  </div>
+                  <div class="aside-card">
+                    <h4>Contents</h4>
+                    <div class="toc-links"><a class="toc-link" href="#что-уже-видно-по-бизнесу">Что уже видно по бизнесу</a><a class="toc-link" href="#категории-и-их-роль">Категории и их роль</a><a class="toc-link" href="#самые-важные-сигналы-для-стратегии">Самые важные сигналы для стратегии</a><a class="toc-link" href="#1-knitwear-это-не-просто-категория-а-главный-мотор-бренда">1. Knitwear это не просто категория, а главный мотор бренда</a><a class="toc-link" href="#2-bottoms-уже-нельзя-считать-второстепенным-блоком">2. Bottoms уже нельзя считать второстепенным блоком</a><a class="toc-link" href="#3-outerwear-выглядит-как-высокоэффективный-halo-image-driver">3. Outerwear выглядит как высокоэффективный halo / image-driver</a><a class="toc-link" href="#4-accessories-перегружены-и-требуют-жёсткой-чистки">4. Accessories перегружены и требуют жёсткой чистки</a><a class="toc-link" href="#5-dresses-растут-но-не-как-широкая-база">5. Dresses растут, но не как широкая база</a><a class="toc-link" href="#ценовая-архитектура">Ценовая архитектура</a><a class="toc-link" href="#что-развивать-дальше">Что развивать дальше</a><a class="toc-link" href="#приоритет-1-укреплять-core-вокруг-knitwear-bottoms">Приоритет 1. Укреплять core вокруг knitwear + bottoms</a><a class="toc-link" href="#приоритет-2-сделать-аксессуары-управляемым-traffic-блоком-а-не-складским-хвостом">Приоритет 2. Сделать аксессуары управляемым traffic-блоком, а не складским хвостом</a><a class="toc-link" href="#приоритет-3-держать-outerwear-как-узкий-но-сильный-high-ticket-блок">Приоритет 3. Держать outerwear как узкий, но сильный high-ticket блок</a><a class="toc-link" href="#приоритет-4-развивать-dresses-через-winner-based-strategy">Приоритет 4. Развивать dresses через winner-based strategy</a><a class="toc-link" href="#приоритет-5-формализовать-print-strategy">Приоритет 5. Формализовать print strategy</a><a class="toc-link" href="#что-чистить-в-первую-очередь">Что чистить в первую очередь</a><a class="toc-link" href="#что-пока-нельзя-утверждать-жёстко">Что пока нельзя утверждать жёстко</a><a class="toc-link" href="#следующий-шаг-который-даст-максимум-пользы">Следующий шаг, который даст максимум пользы</a></div>
+                  </div>
+                </aside>
+              </div>
+            </section>
+            
+            <section class="section" id="abc-analysis">
+              <div class="two-col">
+                <article class="article">
+                  <div class="eyebrow">Internal analytics</div>
+                  <h1>ABC-анализ ассортимента за последние 12 месяцев</h1>
+<p>Период: <code>2025-03-12 — 2026-03-12</code></p>
+<p>Исходные файлы:</p>
+<ul>
+<li><a href="./lapatanova_public_bundle.zip">abc_analysis.csv</a></li>
+<li><a href="./lapatanova_public_bundle.zip">top50_by_revenue.csv</a></li>
+<li><a href="./lapatanova_public_bundle.zip">summary.json</a></li>
+</ul>
+<h2 id="метод">Метод</h2>
+<ul>
+<li>Использованы реальные продажи из <code>demand + retaildemand</code>.</li>
+<li>Исключены строки вне периода 365 дней, неактуальные документы и строки с нулевой выручкой или количеством.</li>
+<li>Одинаковые товары агрегированы без размерной разбивки: размеры схлопнуты на уровне <code>product/style</code>.</li>
+<li>Себестоимость рассчитана как <code>30%</code> от фактической цены продажи; валовая прибыль и маржа являются модельными.</li>
+</ul>
+<h2 id="база-расчета">База расчета</h2>
+<ul>
+<li>Строк продаж в исходном <code>sales_fact</code>: <code>21049</code></li>
+<li>В анализ попало строк: <code>5509</code></li>
+<li>Исключено строк вне периода: <code>15376</code></li>
+<li>Исключено неактуальных строк: <code>7</code></li>
+<li>Исключено строк с нулевой выручкой/количеством: <code>157</code></li>
+<li>Уникальных SKU в анализе: <code>1151</code></li>
+<li>Продано единиц за период: <code>5725.0</code></li>
+<li>Выручка за период: <code>21090947.94 ₽</code></li>
+</ul>
+<h2 id="abc-сводка">ABC-сводка</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Группа</th>
+<th style="text-align:right">SKU</th>
+<th style="text-align:right">Доля SKU</th>
+<th style="text-align:right">Доля выручки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align:right">441</td>
+<td style="text-align:right">38.31%</td>
+<td style="text-align:right">80.01%</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align:right">351</td>
+<td style="text-align:right">30.5%</td>
+<td style="text-align:right">14.99%</td>
+</tr>
+<tr>
+<td>C</td>
+<td style="text-align:right">359</td>
+<td style="text-align:right">31.19%</td>
+<td style="text-align:right">5.00%</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="аналитический-блок">Аналитический блок</h2>
+<ul>
+<li>В группу <code>A</code> попало <code>441</code> SKU. Они дают <code>80.01%</code> выручки периода.</li>
+<li>Основной бизнес фактически делают <code>441</code> SKU из <code>1151</code>. Это <code>38.31%</code> всего продающегося ассортимента.</li>
+<li>Для классического ABC это довольно широкий слой <code>A</code>, значит выручка распределена по слишком большому числу SKU и ядро бизнеса пока недостаточно сфокусировано.</li>
+<li>В группе <code>C</code> находится <code>359</code> SKU, это <code>31.19%</code> ассортимента. Если доля <code>C</code> высока, матрица перегружена хвостом слабых SKU.</li>
+<li>Доля <code>C</code> заметная, но главный сигнал сейчас не только в хвосте, а в том, что <code>A</code>-слой слишком широк и требует выделения настоящего repeat-core.</li>
+<li><code>A</code>-товары — ядро бизнеса: их нужно держать в наличии, защищать от out-of-stock и использовать как основу повторяемой ассортиментной матрицы.</li>
+<li><code>B</code>-товары — поддерживающий слой: их стоит оптимизировать по цветам, размерам и остаткам, но не убирать механически.</li>
+<li><code>C</code>-товары — слабый хвост: их нужно проверять на смысл существования, распродавать, сокращать или переводить в имиджевый/капсульный блок.</li>
+</ul>
+<h2 id="топ-50-товаров-по-выручке">Топ-50 товаров по выручке</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>SKU</th>
+<th>Название товара</th>
+<th style="text-align:right">Категория</th>
+<th style="text-align:right">Кол-во</th>
+<th style="text-align:right">Выручка</th>
+<th style="text-align:right">ABC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2308</td>
+<td>Жакет прямого кроя с карманами сливочно-желтый</td>
+<td style="text-align:right">jackets_blazers</td>
+<td style="text-align:right">23.00</td>
+<td style="text-align:right">201480.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2435</td>
+<td>Юбка трикотажная ажур Листочки ваниль</td>
+<td style="text-align:right">skirts</td>
+<td style="text-align:right">34.00</td>
+<td style="text-align:right">197106.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2283</td>
+<td>Парка английская олива с принтом зебра</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">17.00</td>
+<td style="text-align:right">183120.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2173</td>
+<td>Пальто шерсятное двубортное с поясом тауп</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">9.00</td>
+<td style="text-align:right">180825.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2573</td>
+<td>Бомбер женский серый с трикотажными резинками</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">13.00</td>
+<td style="text-align:right">167820.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2637</td>
+<td>Джемпер Авангард жаккард маренго-слива</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">25.00</td>
+<td style="text-align:right">164906.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2598</td>
+<td>Пальто-жакет женский гусиная лапка хаки</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">12.00</td>
+<td style="text-align:right">158984.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2574</td>
+<td>Бомбер женский тауп с трикотажными резинками</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">11.00</td>
+<td style="text-align:right">146372.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2332</td>
+<td>Жакет прямого кроя с карманами эвкалипт</td>
+<td style="text-align:right">jackets_blazers</td>
+<td style="text-align:right">16.00</td>
+<td style="text-align:right">141620.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2688</td>
+<td>Джемпер Бантики изумруд-бургунди</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">20.00</td>
+<td style="text-align:right">120960.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2331</td>
+<td>Брюки классика вискоза сливочно-желтый</td>
+<td style="text-align:right">pants</td>
+<td style="text-align:right">21.00</td>
+<td style="text-align:right">114596.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2531</td>
+<td>Джинсовка хлопковая кэмел</td>
+<td style="text-align:right">pants</td>
+<td style="text-align:right">14.00</td>
+<td style="text-align:right">113113.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2353</td>
+<td>Джемпер лютики голубой</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">19.00</td>
+<td style="text-align:right">112850.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2324</td>
+<td>Жилет трикотажный Бадминтон жемчужно-серый</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">24.00</td>
+<td style="text-align:right">109440.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2584</td>
+<td>Дождевик женский светлый беж</td>
+<td style="text-align:right">other</td>
+<td style="text-align:right">10.00</td>
+<td style="text-align:right">108904.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2321</td>
+<td>Поло трикотажное светло-желтый</td>
+<td style="text-align:right">tops_blouses</td>
+<td style="text-align:right">30.00</td>
+<td style="text-align:right">103944.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>916</td>
+<td>Тренч женский олива</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">9.00</td>
+<td style="text-align:right">102070.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2445</td>
+<td>Футболка трикотажная ажур Листочки ваниль</td>
+<td style="text-align:right">tshirts_longsleeves</td>
+<td style="text-align:right">18.00</td>
+<td style="text-align:right">101920.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2310</td>
+<td>Жилет костюмный сливочно-желтый</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">18.00</td>
+<td style="text-align:right">100610.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2527</td>
+<td>Сарафан на бретелях вискоза молочный</td>
+<td style="text-align:right">dresses</td>
+<td style="text-align:right">14.00</td>
+<td style="text-align:right">99610.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2457</td>
+<td>Платье тонкое трикотажное Косичка макси тауп</td>
+<td style="text-align:right">dresses</td>
+<td style="text-align:right">17.00</td>
+<td style="text-align:right">99140.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2833</td>
+<td>Джемпер Тюльпаны серо-голубой</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">15.00</td>
+<td style="text-align:right">98078.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2832</td>
+<td>Джемпер Подснежники светлый беж</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">15.00</td>
+<td style="text-align:right">97932.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2134</td>
+<td>Пальто шерстяное двубортное с поясом серый</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">5.00</td>
+<td style="text-align:right">97425.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2734</td>
+<td>Юбка Мерилин из тенсела сливовый</td>
+<td style="text-align:right">skirts</td>
+<td style="text-align:right">13.00</td>
+<td style="text-align:right">96186.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2440</td>
+<td>Юбка трикотажная ажур Листочки капучино</td>
+<td style="text-align:right">skirts</td>
+<td style="text-align:right">16.00</td>
+<td style="text-align:right">94120.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2357</td>
+<td>Брюки классика вискоза шоколадный</td>
+<td style="text-align:right">pants</td>
+<td style="text-align:right">17.00</td>
+<td style="text-align:right">92912.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2569</td>
+<td>Джемпер женский Софи брусника</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">16.00</td>
+<td style="text-align:right">92380.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2355</td>
+<td>Поло трикотажное розовый с лаймом</td>
+<td style="text-align:right">tops_blouses</td>
+<td style="text-align:right">26.00</td>
+<td style="text-align:right">92190.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2516</td>
+<td>Парка английская кэмел</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">9.00</td>
+<td style="text-align:right">90970.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2333</td>
+<td>Брюки классика вискоза эвкалипт</td>
+<td style="text-align:right">pants</td>
+<td style="text-align:right">16.00</td>
+<td style="text-align:right">90480.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2354</td>
+<td>Джемпер лютики кремовый</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">15.00</td>
+<td style="text-align:right">89928.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2282</td>
+<td>Джинсы-бананы графит</td>
+<td style="text-align:right">pants</td>
+<td style="text-align:right">15.00</td>
+<td style="text-align:right">89408.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2415</td>
+<td>Жакет прямого кроя с карманами шоколад</td>
+<td style="text-align:right">jackets_blazers</td>
+<td style="text-align:right">10.00</td>
+<td style="text-align:right">87216.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2437</td>
+<td>Юбка трикотажная ажур Листочки черный</td>
+<td style="text-align:right">skirts</td>
+<td style="text-align:right">14.00</td>
+<td style="text-align:right">84656.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>910</td>
+<td>Джемпер Чешуйки двусторонний морская волна</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">20.00</td>
+<td style="text-align:right">84524.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2450</td>
+<td>Лонгслив трикотажный ажур Листочки ваниль</td>
+<td style="text-align:right">tshirts_longsleeves</td>
+<td style="text-align:right">14.00</td>
+<td style="text-align:right">81096.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2493</td>
+<td>Блуза бохо из тенсела белая</td>
+<td style="text-align:right">tops_blouses</td>
+<td style="text-align:right">13.00</td>
+<td style="text-align:right">79960.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2627</td>
+<td>Юбка трикотажная прямая сливовый макси</td>
+<td style="text-align:right">skirts</td>
+<td style="text-align:right">23.00</td>
+<td style="text-align:right">79872.20 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2606</td>
+<td>Пальто шерстяное двубортное с поясом темный маренго</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">5.00</td>
+<td style="text-align:right">79625.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2334</td>
+<td>Джемпер мужской грибочки оранжевый</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">12.00</td>
+<td style="text-align:right">77640.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>864</td>
+<td>Котова Е.Ю.</td>
+<td style="text-align:right">other</td>
+<td style="text-align:right">283.00</td>
+<td style="text-align:right">77502.50 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2623</td>
+<td>Джемпер Агата сливовый</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">15.00</td>
+<td style="text-align:right">76734.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2539</td>
+<td>Джинсы-бананы кэмел</td>
+<td style="text-align:right">pants</td>
+<td style="text-align:right">13.00</td>
+<td style="text-align:right">76672.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>1223</td>
+<td>Рубашка женская из тенсела синий</td>
+<td style="text-align:right">tops_blouses</td>
+<td style="text-align:right">14.00</td>
+<td style="text-align:right">76331.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2229</td>
+<td>Джемпер женский грибочки олива-оранжевый</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">14.00</td>
+<td style="text-align:right">75670.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2566</td>
+<td>Джемпер женский Софи лимонный</td>
+<td style="text-align:right">knitwear</td>
+<td style="text-align:right">13.00</td>
+<td style="text-align:right">74626.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2554</td>
+<td>Брюки Спортик женские синий</td>
+<td style="text-align:right">pants</td>
+<td style="text-align:right">13.00</td>
+<td style="text-align:right">74586.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2651</td>
+<td>Пальто-жакет женский утепленный шоко</td>
+<td style="text-align:right">outerwear</td>
+<td style="text-align:right">5.00</td>
+<td style="text-align:right">73200.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+<tr>
+<td>2724</td>
+<td>Юбка Мерилин из тенсела белый</td>
+<td style="text-align:right">skirts</td>
+<td style="text-align:right">10.00</td>
+<td style="text-align:right">72734.00 ₽</td>
+<td style="text-align:right">A</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="стратегические-выводы">Стратегические выводы</h2>
+<ul>
+<li>Для развития бизнеса в первую очередь нужно управлять не всей матрицей одинаково, а через слой <code>A/B/C</code>.</li>
+<li><code>A</code>-товары — это обязательный ассортиментный каркас: именно на них стоит опирать планирование, закупку материалов, производство и пополнение.</li>
+<li><code>B</code>-товары — резерв роста и зона для оптимизации коммерческого предложения.</li>
+<li><code>C</code>-товары — кандидат на сокращение глубины, распродажу или вывод из постоянной матрицы.</li>
+<li>Следующий аналитический слой после этого отчета: <code>XYZ</code>, категорийный анализ, повторные продажи, оборачиваемость и SKU-level маржинальность.</li>
+</ul>
+
+                </article>
+                <aside class="aside">
+                  <div class="aside-card">
+                    <h4>Report</h4>
+                    <p>ABC Analysis</p>
+                    <div class="cta-row">
+                      <a class="button secondary" href="./lapatanova_public_bundle.zip">Download files</a>
+                    </div>
+                  </div>
+                  <div class="aside-card">
+                    <h4>Contents</h4>
+                    <div class="toc-links"><a class="toc-link" href="#метод">Метод</a><a class="toc-link" href="#база-расчета">База расчета</a><a class="toc-link" href="#abc-сводка">ABC-сводка</a><a class="toc-link" href="#аналитический-блок">Аналитический блок</a><a class="toc-link" href="#топ-50-товаров-по-выручке">Топ-50 товаров по выручке</a><a class="toc-link" href="#стратегические-выводы">Стратегические выводы</a></div>
+                  </div>
+                </aside>
+              </div>
+            </section>
+            
+            <section class="section" id="next-analytical-layer">
+              <div class="two-col">
+                <article class="article">
+                  <div class="eyebrow">Internal analytics</div>
+                  <h1>Следующий аналитический слой: XYZ, категории, повторные продажи, оборачиваемость, маржинальность</h1>
+<p>Период продаж: <code>2025-03-12 — 2026-03-12</code></p>
+<p>Исходные файлы:</p>
+<ul>
+<li><a href="./lapatanova_public_bundle.zip">style_analytics_12m.csv</a></li>
+<li><a href="./lapatanova_public_bundle.zip">xyz_style_12m.csv</a></li>
+<li><a href="./lapatanova_public_bundle.zip">category_analysis_12m.csv</a></li>
+<li><span>repeat_customers_12m.csv (not public)</span></li>
+<li><a href="./lapatanova_public_bundle.zip">top_margin_styles_50.csv</a></li>
+<li><a href="./lapatanova_public_bundle.zip">stock_alerts_12m.csv</a></li>
+<li><a href="./lapatanova_public_bundle.zip">summary.json</a></li>
+</ul>
+<h2 id="что-включено">Что включено</h2>
+<ul>
+<li>Единица анализа: <code>style/product</code>, без размерной разбивки.</li>
+<li>Коммерческий слой очищен: исключены строки без <code>product_id</code> и подарочные сертификаты.</li>
+<li>Себестоимость и валовая прибыль рассчитаны по модели <code>30%</code> от фактической цены продажи.</li>
+<li>XYZ рассчитан по месячным продажам за последние 12 календарных месяцев (<code>2025-04</code> … <code>2026-03</code>).</li>
+<li>Порог XYZ адаптирован под fashion-матрицу с редкими продажами: <code>X &lt;= 150.0%</code>, <code>Y &lt;= 250.0%</code>, <code>Z &gt; 250.0%</code> по коэффициенту вариации.</li>
+</ul>
+<h2 id="база-расчета">База расчета</h2>
+<ul>
+<li>Строк продаж в коммерческом слое: <code>5213</code></li>
+<li>Styles в анализе: <code>1322</code></li>
+<li>Выручка 12M: <code>20933749.44 ₽</code></li>
+<li>Валовая прибыль 12M по расчётной модели: <code>14653624.6 ₽</code></li>
+</ul>
+<h2 id="xyz-сводка">XYZ-сводка</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Класс</th>
+<th style="text-align:right">Styles</th>
+<th style="text-align:right">Доля styles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td style="text-align:right">183</td>
+<td style="text-align:right">13.84%</td>
+</tr>
+<tr>
+<td>Y</td>
+<td style="text-align:right">531</td>
+<td style="text-align:right">40.17%</td>
+</tr>
+<tr>
+<td>Z</td>
+<td style="text-align:right">608</td>
+<td style="text-align:right">45.99%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Интерпретация:</p>
+<ul>
+<li><code>X</code> — наиболее предсказуемые модели, их имеет смысл держать как повторяемое ядро.</li>
+<li><code>Y</code> — умеренно волатильные модели, требующие аккуратного планирования глубины.</li>
+<li><code>Z</code> — нерегулярный спрос; это либо fashion/capsule, либо слабый хвост.</li>
+</ul>
+<h2 id="категорийный-срез">Категорийный срез</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Категория</th>
+<th style="text-align:right">Выручка 12M</th>
+<th style="text-align:right">Доля выручки</th>
+<th style="text-align:right">Styles</th>
+<th style="text-align:right">Gross profit</th>
+<th style="text-align:right">Stock</th>
+<th style="text-align:right">Cover days</th>
+<th>X/Y/Z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>knitwear</td>
+<td style="text-align:right">5802890.65 ₽</td>
+<td style="text-align:right">27.72%</td>
+<td style="text-align:right">294</td>
+<td style="text-align:right">4062023.45 ₽</td>
+<td style="text-align:right">676.00</td>
+<td style="text-align:right">211.6</td>
+<td>40/128/126</td>
+</tr>
+<tr>
+<td>outerwear</td>
+<td style="text-align:right">2605903.00 ₽</td>
+<td style="text-align:right">12.45%</td>
+<td style="text-align:right">55</td>
+<td style="text-align:right">1824132.10 ₽</td>
+<td style="text-align:right">51.00</td>
+<td style="text-align:right">79.6</td>
+<td>3/35/17</td>
+</tr>
+<tr>
+<td>tops_blouses</td>
+<td style="text-align:right">2563255.73 ₽</td>
+<td style="text-align:right">12.24%</td>
+<td style="text-align:right">149</td>
+<td style="text-align:right">1794279.01 ₽</td>
+<td style="text-align:right">375.00</td>
+<td style="text-align:right">185.2</td>
+<td>28/64/57</td>
+</tr>
+<tr>
+<td>skirts</td>
+<td style="text-align:right">2526745.89 ₽</td>
+<td style="text-align:right">12.07%</td>
+<td style="text-align:right">173</td>
+<td style="text-align:right">1768722.12 ₽</td>
+<td style="text-align:right">486.00</td>
+<td style="text-align:right">299.6</td>
+<td>20/62/91</td>
+</tr>
+<tr>
+<td>pants</td>
+<td style="text-align:right">2125079.60 ₽</td>
+<td style="text-align:right">10.15%</td>
+<td style="text-align:right">97</td>
+<td style="text-align:right">1487555.72 ₽</td>
+<td style="text-align:right">281.00</td>
+<td style="text-align:right">233.1</td>
+<td>15/42/40</td>
+</tr>
+<tr>
+<td>accessories</td>
+<td style="text-align:right">2092332.07 ₽</td>
+<td style="text-align:right">9.99%</td>
+<td style="text-align:right">376</td>
+<td style="text-align:right">1464632.45 ₽</td>
+<td style="text-align:right">1686.00</td>
+<td style="text-align:right">433.1</td>
+<td>40/138/198</td>
+</tr>
+<tr>
+<td>dresses</td>
+<td style="text-align:right">1253160.00 ₽</td>
+<td style="text-align:right">5.99%</td>
+<td style="text-align:right">72</td>
+<td style="text-align:right">877212.00 ₽</td>
+<td style="text-align:right">211.00</td>
+<td style="text-align:right">403.2</td>
+<td>5/24/43</td>
+</tr>
+<tr>
+<td>tshirts_longsleeves</td>
+<td style="text-align:right">1225434.00 ₽</td>
+<td style="text-align:right">5.85%</td>
+<td style="text-align:right">86</td>
+<td style="text-align:right">857803.80 ₽</td>
+<td style="text-align:right">281.00</td>
+<td style="text-align:right">192.8</td>
+<td>28/31/27</td>
+</tr>
+<tr>
+<td>jackets_blazers</td>
+<td style="text-align:right">512262.00 ₽</td>
+<td style="text-align:right">2.45%</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">358583.40 ₽</td>
+<td style="text-align:right">25.00</td>
+<td style="text-align:right">130.4</td>
+<td>4/3/2</td>
+</tr>
+<tr>
+<td>other</td>
+<td style="text-align:right">123162.50 ₽</td>
+<td style="text-align:right">0.59%</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">86213.75 ₽</td>
+<td style="text-align:right">18.00</td>
+<td style="text-align:right">386.5</td>
+<td>0/3/3</td>
+</tr>
+<tr>
+<td>suits</td>
+<td style="text-align:right">103524.00 ₽</td>
+<td style="text-align:right">0.49%</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">72466.80 ₽</td>
+<td style="text-align:right">7.00</td>
+<td style="text-align:right">98.3</td>
+<td>0/1/4</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="повторные-продажи">Повторные продажи</h2>
+<ul>
+<li>Известных клиентов в данных: <code>775</code></li>
+<li>Повторных клиентов: <code>291</code></li>
+<li>Доля repeat-клиентов: <code>37.55%</code></li>
+<li>Выручка, покрытая известными клиентами: <code>17397156.34 ₽</code> (83.11% от коммерческой выручки)</li>
+<li>Доля выручки от repeat-клиентов внутри известного клиентского сегмента: <code>74.56%</code></li>
+<li>В repeat-анализе исключены служебные placeholder-контрагенты, чтобы не завышать повторные покупки искусственно.</li>
+</ul>
+<h2 id="оборачиваемость-и-stock-сигналы">Оборачиваемость и stock-сигналы</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Статус stock</th>
+<th style="text-align:right">Styles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>balanced</td>
+<td style="text-align:right">87</td>
+</tr>
+<tr>
+<td>understock</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>overstock</td>
+<td style="text-align:right">582</td>
+</tr>
+<tr>
+<td>deadstock</td>
+<td style="text-align:right">178</td>
+</tr>
+<tr>
+<td>stockout</td>
+<td style="text-align:right">469</td>
+</tr>
+</tbody>
+</table></div>
+<p>Интерпретация:</p>
+<ul>
+<li><code>deadstock</code> — есть остаток, но нет продаж за 12M.</li>
+<li><code>overstock</code> — текущий остаток покрывает слишком длинный период продаж.</li>
+<li><code>stockout</code> — продажи есть, но текущего остатка нет; это риск недопродаж.</li>
+<li>Поскольку исторических средних остатков нет, показатели оборачиваемости являются приближёнными и основаны на текущем stock.</li>
+</ul>
+<h2 id="sku-level-маржинальность">SKU-level маржинальность</h2>
+<ul>
+<li>В модели <code>30% COGS</code> процент маржи почти одинаков, поэтому для решений важнее смотреть на <code>gross profit в рублях</code>, <code>revenue</code>, <code>discount dependence</code> и <code>stock status</code>.</li>
+<li>Таблица <a href="./lapatanova_public_bundle.zip">top_margin_styles_50.csv</a> показывает 50 моделей с наибольшим вкладом в gross profit.</li>
+</ul>
+<h2 id="основные-стратегические-выводы">Основные стратегические выводы</h2>
+<ul>
+<li><code>X</code>-моделей только <code>183</code>, а <code>Z</code>-моделей <code>608</code>. Это подтверждает, что заметная часть матрицы живёт нерегулярным спросом и не должна управляться как базовый core.</li>
+<li>Сильный слой для repeat-core стоит искать на пересечении <code>A/X</code>, высокой gross profit и статуса <code>balanced/understock</code>.</li>
+<li><code>A/Z</code> — это не обязательно плохие товары: среди них могут быть сильные имиджевые winners, но их нельзя раздувать в ширину и глубину как базу.</li>
+<li>По текущему snapshot есть <code>582</code> overstock-моделей и <code>178</code> deadstock-моделей. Это уже прямой список для чистки и пересмотра матрицы.</li>
+<li>Повторные продажи нужно использовать как фильтр качества модели: если style даёт выручку, но не возвращает клиентов, это не всегда repeat-core, а часто просто разовый fashion hit.</li>
+<li>Для производства и закупки материалов приоритетно собирать shortlist моделей из <code>A/X</code>, <code>A/Y</code> и gross-profit leaders.</li>
+</ul>
+
+                </article>
+                <aside class="aside">
+                  <div class="aside-card">
+                    <h4>Report</h4>
+                    <p>Next Analytical Layer</p>
+                    <div class="cta-row">
+                      <a class="button secondary" href="./lapatanova_public_bundle.zip">Download files</a>
+                    </div>
+                  </div>
+                  <div class="aside-card">
+                    <h4>Contents</h4>
+                    <div class="toc-links"><a class="toc-link" href="#что-включено">Что включено</a><a class="toc-link" href="#база-расчета">База расчета</a><a class="toc-link" href="#xyz-сводка">XYZ-сводка</a><a class="toc-link" href="#категорийный-срез">Категорийный срез</a><a class="toc-link" href="#повторные-продажи">Повторные продажи</a><a class="toc-link" href="#оборачиваемость-и-stock-сигналы">Оборачиваемость и stock-сигналы</a><a class="toc-link" href="#sku-level-маржинальность">SKU-level маржинальность</a><a class="toc-link" href="#основные-стратегические-выводы">Основные стратегические выводы</a></div>
+                  </div>
+                </aside>
+              </div>
+            </section>
+            
+        <div class="footer-note">
+          Public version built on 2026-03-13. The bundle contains only public-safe reports and aggregated tables.
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
