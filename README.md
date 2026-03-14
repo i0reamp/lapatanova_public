@@ -4,7 +4,9 @@ This repository contains the public-facing publication package for the Lapatanov
 
 Contents:
 - `abc-24m.html` — standalone page with the 24-month ABC analysis
+- `abcxyz-24m.html` — standalone page with the 24-month model ABCXYZ and action matrix
 - `downloads/abc-24m/` — Markdown report and CSV tables for the 24-month ABC analysis
+- `downloads/abcxyz-24m/` — Markdown report and CSV tables for the model-level ABCXYZ analysis
 - `index.html` — rendered public portal for external viewers
 - `lapatanova_public_bundle.zip` — Markdown reports and aggregated tables
 - `.nojekyll` — disables Jekyll processing for GitHub Pages

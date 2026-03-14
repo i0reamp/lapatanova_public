@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lapatanova: ABC × XYZ по моделям</title>
+    <meta name="description" content="Модельный ABCXYZ-анализ и action matrix Lapatanova за 24 месяца" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f3efe6;
+        --paper: rgba(255, 251, 244, 0.96);
+        --ink: #1f1d18;
+        --muted: #6a6356;
+        --accent: #8f3f21;
+        --accent-soft: rgba(143, 63, 33, 0.11);
+        --border: rgba(31, 29, 24, 0.12);
+        --shadow: 0 22px 64px rgba(36, 23, 7, 0.12);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(255,255,255,0.88), transparent 30%),
+          linear-gradient(180deg, #f7f2ea 0%, #efe7db 100%);
+        font-family: "Manrope", "Segoe UI", sans-serif;
+      }
+      .page { max-width: 1480px; margin: 0 auto; padding: 28px 20px 48px; }
+      .hero, .section {
+        background: var(--paper);
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+      }
+      .hero { padding: 28px; display: grid; gap: 18px; }
+      .eyebrow {
+        display: inline-flex;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      h1, h2 {
+        margin: 0;
+        font-family: "Fraunces", Georgia, serif;
+        letter-spacing: -0.03em;
+      }
+      h1 { font-size: clamp(34px, 4vw, 58px); line-height: 0.96; }
+      h2 { font-size: 30px; margin-bottom: 14px; }
+      p { margin: 0; color: var(--muted); line-height: 1.65; }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px;
+      }
+      .stat {
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.82);
+        border: 1px solid var(--border);
+      }
+      .stat strong {
+        display: block;
+        font-size: 28px;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        padding: 11px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: white;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .section { margin-top: 24px; padding: 24px; }
+      .table-wrap {
+        overflow: auto;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 920px;
+        background: rgba(255,255,255,0.9);
+      }
+      th, td {
+        padding: 11px 12px;
+        border-bottom: 1px solid rgba(31,29,24,0.08);
+        text-align: left;
+        vertical-align: top;
+        font-size: 14px;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        background: #f6eee2;
+        z-index: 1;
+      }
+      tbody tr:nth-child(even) { background: rgba(244, 239, 231, 0.56); }
+      ul { margin: 0; padding-left: 20px; }
+      li + li { margin-top: 8px; }
+      @media (max-width: 900px) {
+        .page { padding: 18px 12px 40px; }
+        .hero, .section { padding: 18px; border-radius: 22px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <span class="eyebrow">Lapatanova / ABCXYZ / 24 месяца</span>
+        <div>
+          <h1>ABC × XYZ по моделям и action matrix</h1>
+          <p>Слой для управленческих решений: какие модели масштабировать, какие держать как repeat-core, какие оптимизировать по цветам и какие выводить.</p>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>683</strong>моделей в слое</div>
+          <div class="stat"><strong>78</strong>стабильных X-моделей</div>
+          <div class="stat"><strong>60</strong>моделей в AX</div>
+          <div class="stat"><strong>42 215 850.52 ₽</strong>выручка 24M</div>
+        </div>
+        <div class="actions">
+          <a class="button" href="./downloads/abcxyz-24m/model_abcxyz_24m_report.md">Markdown-отчёт</a>
+          <a class="button" href="./downloads/abcxyz-24m/abcxyz_models_24m.csv">Полная таблица CSV</a>
+          <a class="button" href="./downloads/abcxyz-24m/action_matrix_summary_24m.csv">Action matrix CSV</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Как читать результат</h2>
+        <ul>
+          <li><strong>AX</strong> — повторяемое ядро: это база бизнеса, которую нужно держать в наличии и защищать.</li>
+          <li><strong>AY / AZ</strong> — сильные, но более волатильные модели: работать через winner-colors и ограниченную глубину.</li>
+          <li><strong>BX / BY</strong> — второй эшелон: главный резерв роста и зона оптимизации глубины.</li>
+          <li><strong>CY / CZ</strong> — хвост: сокращать, распродавать, выводить или оставлять только как капсульный эксперимент.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>ABCXYZ-матрица</h2>
+        <div class="table-wrap"><table><thead><tr><th>ABCXYZ</th><th>Моделей</th><th>Выручка 24M</th><th>Доля выручки %</th></tr></thead><tbody><tr><td>AX</td><td>60</td><td>14 153 831.55 ₽</td><td>33.53%</td></tr><tr><td>AY</td><td>119</td><td>16 470 142.34 ₽</td><td>39.01%</td></tr><tr><td>AZ</td><td>39</td><td>3 192 194.00 ₽</td><td>7.56%</td></tr><tr><td>BX</td><td>17</td><td>558 923.68 ₽</td><td>1.32%</td></tr><tr><td>BY</td><td>100</td><td>3 182 465.87 ₽</td><td>7.54%</td></tr><tr><td>BZ</td><td>87</td><td>2 554 399.20 ₽</td><td>6.05%</td></tr><tr><td>CX</td><td>1</td><td>10 385.00 ₽</td><td>0.02%</td></tr><tr><td>CY</td><td>37</td><td>396 571.68 ₽</td><td>0.94%</td></tr><tr><td>CZ</td><td>223</td><td>1 696 937.20 ₽</td><td>4.02%</td></tr></tbody></table></div>
+      </section>
+
+      <section class="section">
+        <h2>Action Matrix</h2>
+        <div class="table-wrap"><table><thead><tr><th>Действие</th><th>Моделей</th><th>Выручка 24M</th><th>Доля выручки %</th></tr></thead><tbody><tr><td>clearance_or_exit</td><td>260</td><td>2 093 508.88 ₽</td><td>4.96%</td></tr><tr><td>optimize_colors_and_keep</td><td>100</td><td>2 997 032.27 ₽</td><td>7.10%</td></tr><tr><td>keep_winner_colors</td><td>94</td><td>11 525 964.42 ₽</td><td>27.30%</td></tr><tr><td>reduce_depth_keep_model</td><td>90</td><td>15 205 076.28 ₽</td><td>36.02%</td></tr><tr><td>optimize_colors_and_markdown</td><td>87</td><td>2 739 832.80 ₽</td><td>6.49%</td></tr><tr><td>replenish_and_scale</td><td>30</td><td>4 915 789.34 ₽</td><td>11.64%</td></tr><tr><td>protect_and_repeat</td><td>21</td><td>2 728 261.53 ₽</td><td>6.46%</td></tr><tr><td>keep_small_depth</td><td>1</td><td>10 385.00 ₽</td><td>0.02%</td></tr></tbody></table></div>
+      </section>
+
+      <section class="section">
+        <h2>Модели для роста</h2>
+        <p>Это первый пул для пополнения, повторов и аккуратного масштабирования.</p>
+        <div class="table-wrap"><table><thead><tr><th>Модель</th><th>Категория</th><th>ABCXYZ</th><th>Stock</th><th>Выручка 24M</th><th>Действие</th></tr></thead><tbody><tr><td>Джемпер чешуйки оверсайз</td><td>knitwear</td><td>AX</td><td>stockout</td><td>576 574.00 ₽</td><td>replenish_and_scale</td></tr><tr><td>Рубашка джинсовая женская</td><td>tops_blouses</td><td>AY</td><td>stockout</td><td>518 723.90 ₽</td><td>keep_winner_colors</td></tr><tr><td>Бомбер женский</td><td>outerwear</td><td>AY</td><td>stockout</td><td>491 816.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Свитер кострома</td><td>knitwear</td><td>AX</td><td>balanced</td><td>462 492.41 ₽</td><td>protect_and_repeat</td></tr><tr><td>Тренч женский</td><td>outerwear</td><td>AY</td><td>stockout</td><td>432 514.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Палантин трикотажный листочки</td><td>accessories</td><td>AX</td><td>balanced</td><td>426 183.99 ₽</td><td>protect_and_repeat</td></tr><tr><td>Джемпер сердечки</td><td>knitwear</td><td>AX</td><td>stockout</td><td>415 268.00 ₽</td><td>replenish_and_scale</td></tr><tr><td>Джемпер грибочки мужской</td><td>knitwear</td><td>AX</td><td>understock</td><td>402 266.00 ₽</td><td>replenish_and_scale</td></tr><tr><td>Джинсы-бананы</td><td>pants</td><td>AX</td><td>understock</td><td>364 242.60 ₽</td><td>replenish_and_scale</td></tr><tr><td>Рубашка из тенсела женская</td><td>tops_blouses</td><td>AY</td><td>stockout</td><td>310 482.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Брюки классика вискоза</td><td>pants</td><td>AX</td><td>balanced</td><td>297 988.00 ₽</td><td>protect_and_repeat</td></tr><tr><td>Кардиган чешуйки жаккард</td><td>knitwear</td><td>AX</td><td>stockout</td><td>289 640.00 ₽</td><td>replenish_and_scale</td></tr><tr><td>Пальто женское оверсайз</td><td>outerwear</td><td>AY</td><td>stockout</td><td>288 832.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Джемпер чешуйки двусторонний</td><td>knitwear</td><td>AX</td><td>stockout</td><td>281 731.50 ₽</td><td>replenish_and_scale</td></tr><tr><td>Джемпер джаред оверсайз</td><td>knitwear</td><td>AX</td><td>stockout</td><td>266 742.00 ₽</td><td>replenish_and_scale</td></tr><tr><td>Пальто шерстяное двубортное с поясом</td><td>outerwear</td><td>AX</td><td>stockout</td><td>259 175.00 ₽</td><td>replenish_and_scale</td></tr><tr><td>Брюки палаццо вискоза</td><td>pants</td><td>AX</td><td>stockout</td><td>242 164.36 ₽</td><td>replenish_and_scale</td></tr><tr><td>Юбка трикотажная в рубчик макси</td><td>skirts</td><td>AX</td><td>balanced</td><td>231 753.00 ₽</td><td>protect_and_repeat</td></tr><tr><td>Бомбер женский изумрудный в клетку</td><td>outerwear</td><td>AY</td><td>stockout</td><td>226 055.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Пальто шерсятное двубортное с поясом</td><td>outerwear</td><td>AY</td><td>stockout</td><td>223 125.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Жакет прямого кроя с карманами сливочно-желтый</td><td>jackets_blazers</td><td>AY</td><td>stockout</td><td>219 180.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Джемпер ромашки</td><td>knitwear</td><td>AY</td><td>no_signal</td><td>217 220.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Пальто-жакет женский</td><td>outerwear</td><td>AY</td><td>balanced</td><td>214 188.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Худи женское с капюшоном</td><td>tops_blouses</td><td>AY</td><td>stockout</td><td>210 680.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Джемпер незабудки женский шоколад с голубым</td><td>knitwear</td><td>AX</td><td>balanced</td><td>209 540.00 ₽</td><td>protect_and_repeat</td></tr><tr><td>Брюки палаццо искусственный шелк</td><td>pants</td><td>AY</td><td>balanced</td><td>208 490.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Рубашка хлопок</td><td>tops_blouses</td><td>AX</td><td>balanced</td><td>198 688.00 ₽</td><td>protect_and_repeat</td></tr><tr><td>Тренч женский олива</td><td>outerwear</td><td>AY</td><td>stockout</td><td>194 480.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Парка английская олива с принтом зебра</td><td>outerwear</td><td>AY</td><td>stockout</td><td>193 200.00 ₽</td><td>keep_winner_colors</td></tr><tr><td>Джемпер женский софи</td><td>knitwear</td><td>AY</td><td>balanced</td><td>185 916.00 ₽</td><td>keep_winner_colors</td></tr></tbody></table></div>
+      </section>
+
+      <section class="section">
+        <h2>Модели для оптимизации и выхода</h2>
+        <p>Это первый пул для сокращения глубины, markdown и пересмотра роли в матрице.</p>
+        <div class="table-wrap"><table><thead><tr><th>Модель</th><th>Категория</th><th>ABCXYZ</th><th>Stock</th><th>Выручка 24M</th><th>Действие</th></tr></thead><tbody><tr><td>Шапка взрослая</td><td>accessories</td><td>AX</td><td>overstock</td><td>1 212 108.60 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Рубашка женская из тенсела</td><td>tops_blouses</td><td>AX</td><td>overstock</td><td>1 002 936.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Джемпер женский грибочки</td><td>knitwear</td><td>AX</td><td>overstock</td><td>572 722.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Футболка трикотажная косичка</td><td>tshirts_longsleeves</td><td>AX</td><td>overstock</td><td>560 170.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Шапка взрослая шерсть</td><td>accessories</td><td>AX</td><td>overstock</td><td>446 831.98 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Шарф взрослый</td><td>accessories</td><td>AX</td><td>overstock</td><td>446 327.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Юбка мерилин из тенсела</td><td>skirts</td><td>AY</td><td>overstock</td><td>430 882.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Юбка трикотажная ажур листочки</td><td>skirts</td><td>AY</td><td>overstock</td><td>415 562.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Брюки трикотаж</td><td>pants</td><td>AX</td><td>overstock</td><td>396 082.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Джемпер в рубчик укороченный</td><td>knitwear</td><td>AX</td><td>overstock</td><td>281 514.10 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Шорты льняные</td><td>pants</td><td>AY</td><td>overstock</td><td>278 926.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Блуза с воротом стойка из тенсела</td><td>tops_blouses</td><td>AZ</td><td>overstock</td><td>278 065.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Жилет льняной</td><td>knitwear</td><td>AY</td><td>overstock</td><td>240 758.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Брюки палаццо льняные</td><td>pants</td><td>AY</td><td>overstock</td><td>238 460.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Джемпер джеки интерлок</td><td>knitwear</td><td>AX</td><td>overstock</td><td>232 356.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Жакет прямого кроя с карманами</td><td>jackets_blazers</td><td>AX</td><td>overstock</td><td>228 836.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Джемпер чешуйки двусторонний морская волна</td><td>knitwear</td><td>AX</td><td>overstock</td><td>218 624.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Джемпер авангард жаккард</td><td>knitwear</td><td>AY</td><td>overstock</td><td>217 630.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Платье ариэль макси искусственный шелк</td><td>dresses</td><td>AY</td><td>overstock</td><td>204 824.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Платье трикотажное ажур колоски макси</td><td>dresses</td><td>AY</td><td>overstock</td><td>199 960.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Лонгслив трикотажный ажур листочки</td><td>tshirts_longsleeves</td><td>AY</td><td>overstock</td><td>182 626.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Джемпер мужской грибочки</td><td>knitwear</td><td>AX</td><td>overstock</td><td>178 860.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Куртка стеганая женская</td><td>outerwear</td><td>AX</td><td>overstock</td><td>178 400.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Юбка трикотажная прямая шерсть макси</td><td>skirts</td><td>AY</td><td>overstock</td><td>176 700.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Кардиган оверсайз интерлок</td><td>knitwear</td><td>AY</td><td>overstock</td><td>173 840.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Манишка на завязках с воротом шерсть</td><td>accessories</td><td>AY</td><td>overstock</td><td>173 708.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Футболка трикотажная ажур листочки</td><td>tshirts_longsleeves</td><td>AY</td><td>overstock</td><td>173 422.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Джемпер агата</td><td>knitwear</td><td>AY</td><td>overstock</td><td>167 889.92 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Юбка трикотажная прямая шерсть миди</td><td>skirts</td><td>AY</td><td>overstock</td><td>165 996.00 ₽</td><td>reduce_depth_keep_model</td></tr><tr><td>Майка трикотажная v-вырез</td><td>tops_blouses</td><td>AY</td><td>overstock</td><td>165 918.00 ₽</td><td>reduce_depth_keep_model</td></tr></tbody></table></div>
+      </section>
+    </main>
+  </body>
+</html>
